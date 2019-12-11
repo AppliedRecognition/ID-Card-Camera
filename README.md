@@ -1,3 +1,5 @@
+![Cocoapods](https://img.shields.io/cocoapods/v/ID-Card-Camera.svg)
+
 # ID Card Camera
 
 Detects an ID card in a camera view and returns the de-warped image of the ID card.
