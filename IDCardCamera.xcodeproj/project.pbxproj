@@ -17,7 +17,38 @@
 		3B3FF9BD23A19EDC00156A59 /* ObjectDetectionSessionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9B423A19EDB00156A59 /* ObjectDetectionSessionHandler.swift */; };
 		3B3FF9BE23A19EDC00156A59 /* ObjectDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9B523A19EDB00156A59 /* ObjectDetectionViewController.swift */; };
 		3B3FF9BF23A19EDC00156A59 /* CardDetectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9B623A19EDC00156A59 /* CardDetectionSettings.swift */; };
+		3B3FF9DB23A2826F00156A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9DA23A2826F00156A59 /* AppDelegate.swift */; };
+		3B3FF9DF23A2826F00156A59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9DE23A2826F00156A59 /* ViewController.swift */; };
+		3B3FF9E223A2826F00156A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E023A2826F00156A59 /* Main.storyboard */; };
+		3B3FF9E423A2827000156A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E323A2827000156A59 /* Assets.xcassets */; };
+		3B3FF9E723A2827000156A59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9E523A2827000156A59 /* LaunchScreen.storyboard */; };
+		3B3FF9ED23A2829800156A59 /* IDCardCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */; };
+		3B3FF9EE23A2829800156A59 /* IDCardCamera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B3FF9EF23A2829800156A59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B3FF99A23A19E9F00156A59 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B3FF9A223A19E9F00156A59;
+			remoteInfo = IDCardCamera;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3B3FF9F123A2829800156A59 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3B3FF9EE23A2829800156A59 /* IDCardCamera.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IDCardCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +65,13 @@
 		3B3FF9B623A19EDC00156A59 /* CardDetectionSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetectionSettings.swift; sourceTree = "<group>"; };
 		3B3FF9C023A19F1D00156A59 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3B3FF9C123A19F1D00156A59 /* ID-Card-Camera.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ID-Card-Camera.podspec"; sourceTree = "<group>"; };
+		3B3FF9D823A2826F00156A59 /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B3FF9DA23A2826F00156A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B3FF9DE23A2826F00156A59 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3B3FF9E123A2826F00156A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3B3FF9E323A2827000156A59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B3FF9E623A2827000156A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B3FF9E823A2827000156A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +79,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B3FF9D523A2826F00156A59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3FF9ED23A2829800156A59 /* IDCardCamera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +99,9 @@
 				3B3FF9C123A19F1D00156A59 /* ID-Card-Camera.podspec */,
 				3B3FF9C023A19F1D00156A59 /* README.md */,
 				3B3FF9A523A19E9F00156A59 /* IDCardCamera */,
+				3B3FF9D923A2826F00156A59 /* TestApp */,
 				3B3FF9A423A19E9F00156A59 /* Products */,
+				3B3FF9EC23A2829800156A59 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */,
+				3B3FF9D823A2826F00156A59 /* TestApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +130,26 @@
 				3B3FF9A723A19E9F00156A59 /* Info.plist */,
 			);
 			path = IDCardCamera;
+			sourceTree = "<group>";
+		};
+		3B3FF9D923A2826F00156A59 /* TestApp */ = {
+			isa = PBXGroup;
+			children = (
+				3B3FF9DA23A2826F00156A59 /* AppDelegate.swift */,
+				3B3FF9DE23A2826F00156A59 /* ViewController.swift */,
+				3B3FF9E023A2826F00156A59 /* Main.storyboard */,
+				3B3FF9E323A2827000156A59 /* Assets.xcassets */,
+				3B3FF9E523A2827000156A59 /* LaunchScreen.storyboard */,
+				3B3FF9E823A2827000156A59 /* Info.plist */,
+			);
+			path = TestApp;
+			sourceTree = "<group>";
+		};
+		3B3FF9EC23A2829800156A59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,18 +184,41 @@
 			productReference = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		3B3FF9D723A2826F00156A59 /* TestApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B3FF9EB23A2827000156A59 /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildPhases = (
+				3B3FF9D423A2826F00156A59 /* Sources */,
+				3B3FF9D523A2826F00156A59 /* Frameworks */,
+				3B3FF9D623A2826F00156A59 /* Resources */,
+				3B3FF9F123A2829800156A59 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B3FF9F023A2829800156A59 /* PBXTargetDependency */,
+			);
+			name = TestApp;
+			productName = TestApp;
+			productReference = 3B3FF9D823A2826F00156A59 /* TestApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3B3FF99A23A19E9F00156A59 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Applied Recognition Inc.";
 				TargetAttributes = {
 					3B3FF9A223A19E9F00156A59 = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1130;
+					};
+					3B3FF9D723A2826F00156A59 = {
+						CreatedOnToolsVersion = 11.3;
 					};
 				};
 			};
@@ -144,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				3B3FF9A223A19E9F00156A59 /* IDCardCamera */,
+				3B3FF9D723A2826F00156A59 /* TestApp */,
 			);
 		};
 /* End PBXProject section */
@@ -155,6 +248,16 @@
 			files = (
 				3B3FF9BB23A19EDC00156A59 /* CardDetectionViewController.xib in Resources */,
 				3B3FF9B723A19EDC00156A59 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B3FF9D623A2826F00156A59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3FF9E723A2827000156A59 /* LaunchScreen.storyboard in Resources */,
+				3B3FF9E423A2827000156A59 /* Assets.xcassets in Resources */,
+				3B3FF9E223A2826F00156A59 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +278,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B3FF9D423A2826F00156A59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B3FF9DF23A2826F00156A59 /* ViewController.swift in Sources */,
+				3B3FF9DB23A2826F00156A59 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B3FF9F023A2829800156A59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B3FF9A223A19E9F00156A59 /* IDCardCamera */;
+			targetProxy = 3B3FF9EF23A2829800156A59 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B3FF9E023A2826F00156A59 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B3FF9E123A2826F00156A59 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3B3FF9E523A2827000156A59 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B3FF9E623A2827000156A59 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3B3FF9A923A19E9F00156A59 /* Debug */ = {
@@ -230,6 +369,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -287,6 +427,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -315,7 +456,6 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.IDCardCamera;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -342,10 +482,47 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.IDCardCamera;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B3FF9E923A2827000156A59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.TestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B3FF9EA23A2827000156A59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3DPTJHF24M;
+				INFOPLIST_FILE = TestApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.appliedrec.TestApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -368,6 +545,15 @@
 			buildConfigurations = (
 				3B3FF9AC23A19E9F00156A59 /* Debug */,
 				3B3FF9AD23A19E9F00156A59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B3FF9EB23A2827000156A59 /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B3FF9E923A2827000156A59 /* Debug */,
+				3B3FF9EA23A2827000156A59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

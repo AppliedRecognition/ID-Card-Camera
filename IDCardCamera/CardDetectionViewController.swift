@@ -22,7 +22,12 @@ import Vision
     var detectedCorners: [Bool] = [false, false, false, false]
     
     @objc public init() {
-        super.init(nibName: "CardDetectionViewController", bundle: Bundle(for: type(of: self)))
+        let bundle = Bundle(for: type(of: self))
+        if let cameraBundleURL = bundle.url(forResource: "IDCardCamera", withExtension: "bundle"), let cameraBundle = Bundle(url: cameraBundleURL) {
+            super.init(nibName: "CardDetectionViewController", bundle: cameraBundle)
+        } else {
+            super.init(nibName: "CardDetectionViewController", bundle: bundle)
+        }
     }
     
     required init?(coder: NSCoder) {

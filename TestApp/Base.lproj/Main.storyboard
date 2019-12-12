@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hp-DN-bCl">
+                                <rect key="frame" x="128" y="425" width="158" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="Scan ID Card"/>
+                                <connections>
+                                    <action selector="startIDCardScan" destination="BYZ-38-t0r" eventType="touchUpInside" id="JHr-kX-Vyn"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="48S-RQ-TFr">
+                                <rect key="frame" x="47" y="347" width="320" height="202"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="orx-rj-y81"/>
+                                    <constraint firstAttribute="width" secondItem="48S-RQ-TFr" secondAttribute="height" multiplier="85.6:53.98" identifier="aspectRatio" id="xYD-ZC-KzY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XEC-hs-W6n" appends="YES" id="2io-M9-Oqz"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0hp-DN-bCl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6e8-gn-SeC"/>
+                            <constraint firstItem="48S-RQ-TFr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZSl-8F-v8d"/>
+                            <constraint firstItem="0hp-DN-bCl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZTd-Ni-aKl"/>
+                            <constraint firstItem="48S-RQ-TFr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="aFh-zd-OlA"/>
+                            <constraint firstItem="48S-RQ-TFr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" id="tJO-zc-8xm"/>
+                            <constraint firstItem="48S-RQ-TFr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yX4-zR-9AF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardImageView" destination="48S-RQ-TFr" id="ipZ-sg-r7J"/>
+                        <outlet property="scanButton" destination="0hp-DN-bCl" id="gOx-uY-k52"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XEC-hs-W6n">
+                    <connections>
+                        <action selector="startIDCardScan" destination="BYZ-38-t0r" id="Sf2-zc-MdZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="139" y="138"/>
+        </scene>
+    </scenes>
+</document>
