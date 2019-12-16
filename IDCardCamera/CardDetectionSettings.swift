@@ -8,13 +8,29 @@
 
 import UIKit
 
+/// Card detection session settings
+/// - Since: 1.0.0
 @objc public class CardDetectionSettings: NSObject {
     
+    /// Card orientation
+    /// - Since: 1.0.0
     @objc public enum Orientation: Int {
-        case landscape, portrait
+        /// Landscape (height &lt; width)
+        case landscape
+        /// Portrait (width &lt; height)
+        case portrait
     }
     
+    /// Size of the card to detect
+    ///
+    /// Only the aspect ratio is considered by the app. The units are inconsequential.
+    /// - Since: 1.0.0
     @objc public var size: CGSize
+    
+    /// Orientation of the card to be detected
+    ///
+    /// The orientation is determined by the size. Setting the orientation to the other available value will flip the width and height of the size.
+    /// - Since: 1.0.0
     @objc public var orientation: Orientation {
         get {
             return size.width > size.height ? .landscape : .portrait
@@ -31,6 +47,11 @@ import UIKit
             }
         }
     }
+    /// Number of image samples the camera should collect
+    ///
+    /// The samples in the pool are compared for sharpness and the sharpest one is de-warped and returned.
+    /// - Since: 1.1.0
+    @objc public var imagePoolSize: Int = 5
     
     @objc public init(width: CGFloat, height: CGFloat) {
         self.size = CGSize(width: width, height: height)

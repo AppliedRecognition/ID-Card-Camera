@@ -187,12 +187,13 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
             if let rect = request.results?.first as? VNRectangleObservation, !self.imageConversionOperationQueue.isSuspended && self.imageConversionOperationQueue.operationCount == 0 {
                 let op = PerspectiveCorrectionParamsOperation(pixelBuffer: pixelBuffer, orientation: orientation, rect: rect)
                 op.completionBlock = { [weak self, weak op] in
+                    let sharpness = op?.sharpness
                     if let cgImage = op?.cgImage, let corners = op?.corners, let params = op?.perspectiveCorrectionParams {
                         DispatchQueue.main.async {
                             guard let `self` = self else {
                                 return
                             }
-                            delegate.sessionHandler(self, didDetectCardInImage: cgImage, withTopLeftCorner: corners.topLeft, topRightCorner: corners.topRight, bottomRightCorner: corners.bottomRight, bottomLeftCorner: corners.bottomLeft, perspectiveCorrectionParams: params)
+                            delegate.sessionHandler(self, didDetectCardInImage: cgImage, withTopLeftCorner: corners.topLeft, topRightCorner: corners.topRight, bottomRightCorner: corners.bottomRight, bottomLeftCorner: corners.bottomLeft, perspectiveCorrectionParams: params, sharpness: sharpness)
                         }
                     }
                 }
@@ -239,7 +240,7 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
 
 @available(iOS 11.0, *)
 protocol CardDetectionSessionHandlerDelegate {
-    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectCardInImage image: CGImage, withTopLeftCorner topLeftCorner: CGPoint, topRightCorner: CGPoint, bottomRightCorner: CGPoint, bottomLeftCorner: CGPoint, perspectiveCorrectionParams: [String:CIVector])
+    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectCardInImage image: CGImage, withTopLeftCorner topLeftCorner: CGPoint, topRightCorner: CGPoint, bottomRightCorner: CGPoint, bottomLeftCorner: CGPoint, perspectiveCorrectionParams: [String:CIVector], sharpness: Float?)
     func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectBarcodeData data: Data)
     func shouldDetectCardImageWithSessionHandler(_ handler: ObjectDetectionSessionHandler) -> Bool
     func shouldDetectBarcodeWithSessionHandler(_ handler: ObjectDetectionSessionHandler) -> Bool

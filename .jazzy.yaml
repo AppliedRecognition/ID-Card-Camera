@@ -1,0 +1,14 @@
+clean: true
+sdk: iphonesimulator
+xcodebuild_arguments:
+ - -project
+ - IDCardCamera.xcodeproj
+ - -scheme
+ - IDCardCamera
+ - -sdk
+ - iphonesimulator
+author: Applied Recognition, Inc.
+module: IDCardCamera
+min_acl: public
+skip_undocumented: true
+hide_documentation_coverage: true

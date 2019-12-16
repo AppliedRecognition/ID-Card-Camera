@@ -12,6 +12,60 @@ import CoreMedia
 
 extension CVImageBuffer {
     
+    @available(iOS 13.0, *)
+    public func sharpness() -> Float? {
+        CVPixelBufferLockBaseAddress(self, [])
+        guard let srcBuff = CVPixelBufferGetBaseAddress(self) else {
+            return nil
+        }
+        let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(self)
+        let width: UInt = UInt(CVPixelBufferGetWidth(self))
+        let height: UInt = UInt(CVPixelBufferGetHeight(self))
+        let outBytesPerRow: Int = bytesPerRow / 4
+        // Calculate the size of the rotated image buffer
+        let destSize = outBytesPerRow * Int(height) * MemoryLayout<UInt8>.size
+        var planar8 = [UInt8](repeating: 0, count: destSize)
+        var planar8Buffer = vImage_Buffer(data: &planar8, height: height, width: width, rowBytes: outBytesPerRow)
+        var argbBuffer = vImage_Buffer(data: srcBuff, height: height, width: width, rowBytes: bytesPerRow)
+        let divisor: Float = 256
+        let a: Int16 = 0
+        let r = Int16(0.299*divisor)
+        let g = Int16(0.587*divisor)
+        let b = Int16(0.114*divisor)
+        let format = CVPixelBufferGetPixelFormatType(self)
+        var matrix: [Int16]
+        switch format {
+        case kCVPixelFormatType_32ARGB:
+            matrix = [a,r,g,b]
+        case kCVPixelFormatType_32ABGR:
+            matrix = [a,b,g,r]
+        case kCVPixelFormatType_32BGRA, kCVPixelFormatType_24BGR:
+            matrix = [b,g,r,a]
+        case kCVPixelFormatType_32RGBA, kCVPixelFormatType_24RGB:
+            matrix = [r,g,b,a]
+        default:
+            return nil
+        }
+        guard vImageMatrixMultiply_ARGB8888ToPlanar8(&argbBuffer, &planar8Buffer, &matrix, Int32(divisor), nil, 0, numericCast(kvImageNoFlags)) == kvImageNoError else {
+            return nil
+        }
+        var floatPixels: [Float] = [Float](unsafeUninitializedCapacity: planar8.count) { buffer, initializedCount in
+            var floatBuffer = vImage_Buffer(data: buffer.baseAddress, height: planar8Buffer.height, width: planar8Buffer.width, rowBytes: outBytesPerRow * MemoryLayout<Float>.size)
+            vImageConvert_Planar8toPlanarF(&planar8Buffer, &floatBuffer, 0, 255, vImage_Flags(kvImageNoFlags))
+            initializedCount = planar8.count
+        }
+        let laplacian: [Float] = [-1, -1, -1,
+                                  -1,  8, -1,
+                                  -1, -1, -1]
+        vDSP.convolve(floatPixels, rowCount: Int(height), columnCount: outBytesPerRow, with3x3Kernel: laplacian, result: &floatPixels)
+        var mean = Float.nan
+        var stdDev = Float.nan
+
+        vDSP_normalize(floatPixels, 1, nil, 1, &mean, &stdDev, vDSP_Length(floatPixels.count))
+        CVPixelBufferUnlockBaseAddress(self, [])
+        return stdDev
+    }
+    
     public func cgImage(withOrientation orientation: CGImagePropertyOrientation) -> CGImage? {
         // Lock the pixels before adjusting rotation
         CVPixelBufferLockBaseAddress(self, [])

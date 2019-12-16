@@ -19,6 +19,7 @@ public class PerspectiveCorrectionParamsOperation: Operation {
     var perspectiveCorrectionParams: [String:CIVector]?
     var corners: (topLeft: CGPoint, topRight: CGPoint, bottomRight: CGPoint, bottomLeft: CGPoint)?
     var cgImage: CGImage?
+    var sharpness: Float?
     
     public init(pixelBuffer: CVImageBuffer, orientation: CGImagePropertyOrientation, rect: VNRectangleObservation) {
         self.pixelBuffer = pixelBuffer
@@ -27,6 +28,9 @@ public class PerspectiveCorrectionParamsOperation: Operation {
     }
     
     public override func main() {
+        if #available(iOS 13.0, *) {
+            self.sharpness = pixelBuffer.sharpness()
+        }
         guard let cgImage = pixelBuffer.cgImage(withOrientation: orientation) else {
             return
         }

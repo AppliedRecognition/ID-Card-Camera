@@ -10,9 +10,15 @@ import UIKit
 import AVFoundation
 import Vision
 
+/// View controller used to run a camera session that collects an image of an card with a given aspect ratio and returns an image with corrected perspective
+/// - Since: 1.0.0
 @objc public class CardDetectionViewController: ObjectDetectionViewController, UIAdaptivePresentationControllerDelegate {
     
+    /// Card detection delegate
+    /// - Since: 1.0.0
     @objc public var delegate: CardDetectionViewControllerDelegate?
+    /// Card detection settings
+    /// - Since: 1.0.0
     @objc public var settings = CardDetectionSettings(width: 85.6, height: 53.98)
     
     var viewSizeObserverContext: Int = 0
@@ -21,6 +27,10 @@ import Vision
     
     var detectedCorners: [Bool] = [false, false, false, false]
     
+    private var collectedImages: [(CGImage,[String:CIVector],Float)] = []
+    
+    /// Initializer
+    /// - Since: 1.0.0
     @objc public init() {
         let bundle = Bundle(for: type(of: self))
         if let cameraBundleURL = bundle.url(forResource: "IDCardCamera", withExtension: "bundle"), let cameraBundle = Bundle(url: cameraBundleURL) {
@@ -82,6 +92,7 @@ import Vision
         let cardAspectRatioConstraint = NSLayoutConstraint(item: self.cardOverlayView!, attribute: .width, relatedBy: .equal, toItem: self.cardOverlayView!, attribute: .height, multiplier: aspectRatio, constant: 0)
         cardAspectRatioConstraint.identifier = "aspectRatio"
         self.cardOverlayView.addConstraint(cardAspectRatioConstraint)
+        
     }
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -148,7 +159,7 @@ import Vision
         return CIContext().createCGImage(ciImage, from: ciImage.extent)
     }
     
-    override func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectCardInImage image: CGImage, withTopLeftCorner topLeftCorner: CGPoint, topRightCorner: CGPoint, bottomRightCorner: CGPoint, bottomLeftCorner: CGPoint, perspectiveCorrectionParams: [String:CIVector]) {
+    override func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectCardInImage image: CGImage, withTopLeftCorner topLeftCorner: CGPoint, topRightCorner: CGPoint, bottomRightCorner: CGPoint, bottomLeftCorner: CGPoint, perspectiveCorrectionParams: [String:CIVector], sharpness: Float?) {
         
         let imageSize = CGSize(width: image.width, height: image.height)
         let expected = self.expectedCorners(inSize: imageSize)
@@ -166,29 +177,49 @@ import Vision
         self.drawCardOverlay()
         if self.detectedCorners.reduce(true, { $0 ? $1 : false }) {
             // All corners detected
-            let originalPrompt = self.navigationItem.prompt
-            if self.backgroundOperationQueue.isSuspended || self.backgroundOperationQueue.operationCount > 0 {
+            if let imageSharpness = sharpness {
+                self.collectedImages.append((image, perspectiveCorrectionParams, imageSharpness))
+                if self.collectedImages.count >= self.settings.imagePoolSize {
+                    self.collectedImages.sort(by: {
+                        $0.2 > $1.2
+                    })
+                    guard let (image, params, _) = self.collectedImages.first else {
+                        return
+                    }
+                    self.collectedImages = []
+                    self.dewarpImageInBackground(image, perspectiveCorrectionParams: params)
+                }
                 return
             }
-            self.backgroundOperationQueue.addOperation { [weak self] in
-                guard let `self` = self else {
-                    return
-                }
-                guard let dewarpedImage = self.dewarpImage(image, withParams: perspectiveCorrectionParams) else {
-                    DispatchQueue.main.async {
-                        self.navigationItem.prompt = originalPrompt
-                        self.cardOverlayView.isHidden = false
-                        self.cameraPreview.isHidden = false
-                    }
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.dismiss()
-                    self.delegate?.cardDetectionViewController(self, didDetectCard: dewarpedImage, withSettings: self.settings)
-                    self.delegate = nil
-                }
-                self.backgroundOperationQueue.isSuspended = true
+            self.dewarpImageInBackground(image, perspectiveCorrectionParams: perspectiveCorrectionParams)
+        } else {
+            self.collectedImages = []
+        }
+    }
+    
+    private func dewarpImageInBackground(_ image: CGImage, perspectiveCorrectionParams: [String:CIVector]) {
+        let originalPrompt = self.navigationItem.prompt
+        if self.backgroundOperationQueue.isSuspended || self.backgroundOperationQueue.operationCount > 0 {
+            return
+        }
+        self.backgroundOperationQueue.addOperation { [weak self] in
+            guard let `self` = self else {
+                return
             }
+            guard let dewarpedImage = self.dewarpImage(image, withParams: perspectiveCorrectionParams) else {
+                DispatchQueue.main.async {
+                    self.navigationItem.prompt = originalPrompt
+                    self.cardOverlayView.isHidden = false
+                    self.cameraPreview.isHidden = false
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                self.dismiss()
+                self.delegate?.cardDetectionViewController(self, didDetectCard: dewarpedImage, withSettings: self.settings)
+                self.delegate = nil
+            }
+            self.backgroundOperationQueue.isSuspended = true
         }
     }
     
