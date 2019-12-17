@@ -21,6 +21,10 @@ import Vision
     /// - Since: 1.0.0
     @objc public var settings = CardDetectionSettings(width: 85.6, height: 53.98)
     
+    override var torchLevel: Float {
+        return self.settings.torchLevel
+    }
+    
     var viewSizeObserverContext: Int = 0
     
     @IBOutlet var cardOverlayView: UIView!

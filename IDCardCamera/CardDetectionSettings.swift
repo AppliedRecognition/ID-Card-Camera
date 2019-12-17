@@ -53,6 +53,12 @@ import UIKit
     /// - Since: 1.1.0
     @objc public var imagePoolSize: Int = 5
     
+    /// Set the torch level when the user turns the torch on
+    ///
+    /// Range `0.0` (darkest) – `1` (brightest). Default value is `0.1`.
+    /// - Since: 1.2.0
+    @objc public var torchLevel: Float = 0.1
+    
     @objc public init(width: CGFloat, height: CGFloat) {
         self.size = CGSize(width: width, height: height)
     }

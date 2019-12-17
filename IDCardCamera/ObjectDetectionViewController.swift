@@ -22,6 +22,10 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
     @IBOutlet var cameraPreview: UIView!
     @IBOutlet var torchImageView: UIImageView!
     
+    var torchLevel: Float {
+        return 0.1
+    }
+    
     @IBAction func toggleTorch(_ sender: UIGestureRecognizer) {
         if !self.sessionHandler.isTorchAvailable {
             return
@@ -35,6 +39,7 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
             torchOn = true
             imageName = "torch_off"
         }
+        self.sessionHandler.torchLevel = self.torchLevel
         self.sessionHandler.toggleTorch(on: torchOn)
         self.torchImageView.image = UIImage(named: imageName, in: Bundle(for: type(of: self)), compatibleWith: nil)
     }

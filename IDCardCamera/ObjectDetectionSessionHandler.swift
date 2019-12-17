@@ -49,8 +49,9 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         guard let device = self.device else {
             return false
         }
-        return device.hasTorch
+        return device.hasTorch && device.isTorchAvailable
     }
+    var torchLevel: Float = 0.1
     
     var imageTransform: CGAffineTransform {
         switch self.imageOrientation {
@@ -154,11 +155,11 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         guard let device = self.device else {
             return
         }
-        if device.hasTorch {
+        if device.hasTorch && device.isTorchAvailable {
             do {
                 try device.lockForConfiguration()
                 if on {
-                    device.torchMode = .on
+                    try device.setTorchModeOn(level: self.torchLevel)
                 } else {
                     device.torchMode = .off
                 }
