@@ -50,6 +50,19 @@ import Vision
     
     @IBAction override func cancel() {
         self.dismiss()
+        self.delegateCancel()
+    }
+    
+    private func dismiss() {
+        self.collectedImages = []
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func delegateCancel() {
         if !self.backgroundOperationQueue.isSuspended {
             self.backgroundOperationQueue.addOperation {
                 if let delegate = self.delegate {
@@ -62,14 +75,6 @@ import Vision
         } else {
             self.delegate?.cardDetectionViewControllerDidCancel?(self)
             self.delegate = nil
-        }
-    }
-    
-    private func dismiss() {
-        if let navController = self.navigationController {
-            navController.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -209,7 +214,7 @@ import Vision
                     }
                     return
                 }
-                if let quality = self.delegate?.qualityOfImage?(image)?.floatValue {
+                if let quality = self.delegate?.qualityOfImage?(dewarpedImage)?.floatValue {
                     self.collectedImages.append((dewarpedImage,quality))
                 } else if let quality = sharpness {
                     self.collectedImages.append((dewarpedImage,quality))
@@ -245,32 +250,6 @@ import Vision
         }
     }
     
-    private func dewarpImageInBackground(_ image: CGImage, perspectiveCorrectionParams: [String:CIVector]) {
-        let originalPrompt = self.navigationItem.prompt
-        if self.backgroundOperationQueue.isSuspended || self.backgroundOperationQueue.operationCount > 0 {
-            return
-        }
-        self.backgroundOperationQueue.addOperation { [weak self] in
-            guard let `self` = self else {
-                return
-            }
-            guard let dewarpedImage = self.dewarpImage(image, withParams: perspectiveCorrectionParams) else {
-                DispatchQueue.main.async {
-                    self.navigationItem.prompt = originalPrompt
-                    self.cardOverlayView.isHidden = false
-                    self.cameraPreview.isHidden = false
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                self.dismiss()
-                self.delegate?.cardDetectionViewController(self, didDetectCard: dewarpedImage, withSettings: self.settings)
-                self.delegate = nil
-            }
-            self.backgroundOperationQueue.isSuspended = true
-        }
-    }
-    
     override func shouldDetectCardImageWithSessionHandler(_ handler: ObjectDetectionSessionHandler) -> Bool {
         return !self.backgroundOperationQueue.isSuspended && self.backgroundOperationQueue.operationCount == 0
     }
@@ -278,7 +257,7 @@ import Vision
     // MARK: - Adaptive presentation controller delegate
     
     public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        self.delegate?.cardDetectionViewControllerDidCancel?(self)
-        self.delegate = nil
+        self.collectedImages = []
+        self.delegateCancel()
     }
 }
