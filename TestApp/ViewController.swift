@@ -32,5 +32,14 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate {
         let uiImage = UIImage(cgImage: image)
         self.cardImageView.image = uiImage
     }
+    
+//    // Uncomment to implement your own image quality detection
+//    func qualityOfImage(_ image: CGImage) -> NSNumber? {
+//        if #available(iOS 13, *) {
+//            // Return `nil` to use image sharpness as quality score
+//            return nil
+//        }
+//        return NSNumber(value: 1) // Implement your own quality scoring
+//    }
 }
 

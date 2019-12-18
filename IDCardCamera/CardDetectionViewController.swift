@@ -31,7 +31,7 @@ import Vision
     
     var detectedCorners: [Bool] = [false, false, false, false]
     
-    private var collectedImages: [(CGImage,[String:CIVector],Float)] = []
+    private var collectedImages: [(CGImage,Float)] = []
     
     /// Initializer
     /// - Since: 1.0.0
@@ -50,8 +50,19 @@ import Vision
     
     @IBAction override func cancel() {
         self.dismiss()
-        self.delegate?.cardDetectionViewControllerDidCancel?(self)
-        self.delegate = nil
+        if !self.backgroundOperationQueue.isSuspended {
+            self.backgroundOperationQueue.addOperation {
+                if let delegate = self.delegate {
+                    DispatchQueue.main.async {
+                        delegate.cardDetectionViewControllerDidCancel?(self)
+                    }
+                    self.delegate = nil
+                }
+            }
+        } else {
+            self.delegate?.cardDetectionViewControllerDidCancel?(self)
+            self.delegate = nil
+        }
     }
     
     private func dismiss() {
@@ -181,23 +192,56 @@ import Vision
         self.drawCardOverlay()
         if self.detectedCorners.reduce(true, { $0 ? $1 : false }) {
             // All corners detected
-            if let imageSharpness = sharpness {
-                self.collectedImages.append((image, perspectiveCorrectionParams, imageSharpness))
-                if self.collectedImages.count >= self.settings.imagePoolSize {
-                    self.collectedImages.sort(by: {
-                        $0.2 > $1.2
-                    })
-                    guard let (image, params, _) = self.collectedImages.first else {
-                        return
-                    }
-                    self.collectedImages = []
-                    self.dewarpImageInBackground(image, perspectiveCorrectionParams: params)
-                }
+            let originalPrompt = self.navigationItem.prompt
+            if self.backgroundOperationQueue.isSuspended || self.backgroundOperationQueue.operationCount > 0 {
                 return
             }
-            self.dewarpImageInBackground(image, perspectiveCorrectionParams: perspectiveCorrectionParams)
+            self.backgroundOperationQueue.addOperation { [weak self] in
+                guard let `self` = self else {
+                    return
+                }
+                guard let dewarpedImage = self.dewarpImage(image, withParams: perspectiveCorrectionParams) else {
+                    self.collectedImages = []
+                    DispatchQueue.main.async {
+                        self.navigationItem.prompt = originalPrompt
+                        self.cardOverlayView.isHidden = false
+                        self.cameraPreview.isHidden = false
+                    }
+                    return
+                }
+                if let quality = self.delegate?.qualityOfImage?(image)?.floatValue {
+                    self.collectedImages.append((dewarpedImage,quality))
+                } else if let quality = sharpness {
+                    self.collectedImages.append((dewarpedImage,quality))
+                } else {
+                    self.returnImage(dewarpedImage)
+                    return
+                }
+                if self.collectedImages.count >= self.settings.imagePoolSize {
+                    self.collectedImages.sort(by: { $0.1 > $1.1 })
+                    guard let (image, _) = self.collectedImages.first else {
+                        return
+                    }
+                    self.returnImage(image)
+                }
+            }
         } else {
             self.collectedImages = []
+        }
+    }
+    
+    private func returnImage(_ image: CGImage) {
+        self.backgroundOperationQueue.isSuspended = true
+        guard let delegate = self.delegate else {
+            DispatchQueue.main.async {
+                self.dismiss()
+            }
+            return
+        }
+        self.delegate = nil
+        DispatchQueue.main.async {
+            self.dismiss()
+            delegate.cardDetectionViewController(self, didDetectCard: image, withSettings: self.settings)
         }
     }
     

@@ -30,21 +30,21 @@
     },
     {
       "file": "/Users/jakub/Applied-Recognition/IDCardCamera/IDCardCamera/CardDetectionViewController.swift",
-      "line": 91,
+      "line": 102,
       "symbol": "CardDetectionViewController.viewDidLoad()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/IDCardCamera/IDCardCamera/CardDetectionViewController.swift",
-      "line": 102,
+      "line": 113,
       "symbol": "CardDetectionViewController.observeValue(forKeyPath:of:change:context:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/jakub/Applied-Recognition/IDCardCamera/IDCardCamera/CardDetectionViewController.swift",
-      "line": 236,
+      "line": 280,
       "symbol": "CardDetectionViewController.presentationControllerDidDismiss(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
