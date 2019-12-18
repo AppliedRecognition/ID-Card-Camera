@@ -122,7 +122,7 @@ import Vision
         let paths: [UIBezierPath] = [
             UIBezierPath(), UIBezierPath(), UIBezierPath(), UIBezierPath()
         ]
-        let cornerLength: CGFloat = overlayRect.height / 4
+        let cornerLength: CGFloat = min(overlayRect.height, overlayRect.width) / 4
         let cornerRadius: CGFloat = 12
         paths[0].move(to: CGPoint(x: overlayRect.minX, y: overlayRect.minY + cornerLength))
         paths[0].addLine(to: CGPoint(x: overlayRect.minX, y: overlayRect.minY + cornerRadius))
