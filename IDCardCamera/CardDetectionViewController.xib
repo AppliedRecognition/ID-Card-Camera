@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="landscape" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -12,28 +12,54 @@
             <connections>
                 <outlet property="cameraPreview" destination="pvV-Xq-kuM" id="vb9-D4-GNX"/>
                 <outlet property="cardOverlayView" destination="UOT-Ud-9mm" id="YIz-YB-Hh9"/>
+                <outlet property="flipCardView" destination="VTX-lS-DQM" id="A0q-h2-LRm"/>
+                <outlet property="navigationBar" destination="abD-Qf-NGJ" id="liG-Uo-84b"/>
                 <outlet property="torchImageView" destination="DYY-Ay-gBQ" id="xQN-7j-NxB"/>
                 <outlet property="view" destination="iN0-l3-epB" id="sDc-nq-vfS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pvV-Xq-kuM">
-                    <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOT-Ud-9mm">
-                    <rect key="frame" x="137.5" y="94" width="392" height="247"/>
+                    <rect key="frame" x="16" y="298" width="343" height="216"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="UOT-Ud-9mm" secondAttribute="height" multiplier="85.6:53.98" placeholder="YES" id="OD8-oK-Khc"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTX-lS-DQM">
+                    <rect key="frame" x="90.666666666666686" y="381" width="194" height="50"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flip your card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Y3-EQy">
+                            <rect key="frame" x="16" y="8" width="162" height="34"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Rf9-Y3-EQy" secondAttribute="bottom" constant="8" id="Iib-k8-sek"/>
+                        <constraint firstItem="Rf9-Y3-EQy" firstAttribute="top" secondItem="VTX-lS-DQM" secondAttribute="top" constant="8" id="K9R-Es-r9F"/>
+                        <constraint firstAttribute="trailing" secondItem="Rf9-Y3-EQy" secondAttribute="trailing" constant="16" id="bYb-Zr-Jkm"/>
+                        <constraint firstItem="Rf9-Y3-EQy" firstAttribute="leading" secondItem="VTX-lS-DQM" secondAttribute="leading" constant="16" id="xVH-AD-8hg"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="torch_on" translatesAutoresizingMaskIntoConstraints="NO" id="DYY-Ay-gBQ">
-                    <rect key="frame" x="309.5" y="307" width="48" height="48"/>
+                    <rect key="frame" x="163.66666666666666" y="710" width="48" height="48"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="dPW-1S-hsE"/>
@@ -44,7 +70,7 @@
                     </connections>
                 </imageView>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abD-Qf-NGJ">
-                    <rect key="frame" x="0.0" y="0.0" width="667" height="78"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="78"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="78" id="XYr-bq-Lk4"/>
                     </constraints>
@@ -60,6 +86,10 @@
                                     <action selector="rotateCard" destination="-1" id="edH-IN-hCq"/>
                                 </connections>
                             </barButtonItem>
+                            <connections>
+                                <outlet property="leftBarButtonItem" destination="Ucp-Ok-Q7P" id="DkX-mR-1UW"/>
+                                <outlet property="rightBarButtonItem" destination="dUa-hX-gPo" id="AaN-1c-lIc"/>
+                            </connections>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -69,11 +99,13 @@
                 <constraint firstItem="pvV-Xq-kuM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8Mu-d6-DmP"/>
                 <constraint firstItem="abD-Qf-NGJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjP-IO-aqH"/>
                 <constraint firstItem="pvV-Xq-kuM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="G6c-AA-cIo"/>
+                <constraint firstItem="VTX-lS-DQM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gvp-sn-vcc"/>
                 <constraint firstItem="UOT-Ud-9mm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" priority="750" id="J7e-HA-O1r"/>
                 <constraint firstAttribute="bottom" secondItem="pvV-Xq-kuM" secondAttribute="bottom" id="UzB-Zc-CxU"/>
                 <constraint firstItem="abD-Qf-NGJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="VsX-cd-XsW"/>
                 <constraint firstItem="UOT-Ud-9mm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WAn-i2-MuT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="DYY-Ay-gBQ" secondAttribute="bottom" constant="20" id="YKE-8u-Mbj"/>
+                <constraint firstItem="VTX-lS-DQM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ZsW-AR-msU"/>
                 <constraint firstItem="DYY-Ay-gBQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eEa-BN-6e0"/>
                 <constraint firstAttribute="trailing" secondItem="abD-Qf-NGJ" secondAttribute="trailing" id="hsr-7h-7fK"/>
                 <constraint firstItem="pvV-Xq-kuM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qDR-fK-Kav"/>

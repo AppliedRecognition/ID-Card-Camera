@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardDetectionViewControllerDelegate Protocol Reference</title>
+    <title>BaseCardDetectionSettings Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/CardDetectionViewControllerDelegate" class="dashAnchor"></a>
-    <a title="CardDetectionViewControllerDelegate Protocol Reference"></a>
+    <a name="//apple_ref/swift/Class/BaseCardDetectionSettings" class="dashAnchor"></a>
+    <a title="BaseCardDetectionSettings Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">IDCardCamera Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">IDCardCamera Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CardDetectionViewControllerDelegate Protocol Reference
+        BaseCardDetectionSettings Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,18 +89,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardDetectionViewControllerDelegate</h1>
+            <h1>BaseCardDetectionSettings</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">BaseCardDetectionSettings</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Card detection view controller delegate</p>
+            <p>Base card detection settings</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -111,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewController:didDetectCard:withSettings:"></a>
-                    <a name="//apple_ref/swift/Method/cardDetectionViewController(_:didDetectCard:withSettings:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewController:didDetectCard:withSettings:">cardDetectionViewController(_:didDetectCard:withSettings:)</a>
+                    <a name="/s:12IDCardCamera25BaseCardDetectionSettingsC11OrientationO"></a>
+                    <a name="//apple_ref/swift/Enum/Orientation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12IDCardCamera25BaseCardDetectionSettingsC11OrientationO">Orientation</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -121,7 +121,43 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Called when card detection succeeds</p>
+                        <p>Card orientation</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.0.0
+
+</div>
+
+                        <a href="../Classes/BaseCardDetectionSettings/Orientation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Orientation</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)size"></a>
+                    <a name="//apple_ref/swift/Property/size" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)size">size</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Size of the card to detect</p>
+
+<p>Only the aspect ratio is considered by the app. The units are inconsequential.</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
     1.0.0
@@ -134,52 +170,9 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">func</span> <span class="nf">cardDetectionViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionViewController.html">CardDetectionViewController</a></span><span class="p">,</span> <span class="n">didDetectCard</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">CGImage</span><span class="p">,</span> <span class="n">withSettings</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionSettings.html">CardDetectionSettings</a></span><span class="p">)</span></code></pre>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">size</span><span class="p">:</span> <span class="kt">CGSize</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>viewController</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>View controller that detected the card</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Image of the detected card straightened to fit the rectangle specified in settings</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>settings</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Card detection settings</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -187,9 +180,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewControllerDidCancel:"></a>
-                    <a name="//apple_ref/swift/Method/cardDetectionViewControllerDidCancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewControllerDidCancel:">cardDetectionViewControllerDidCancel(_:)</a>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)orientation"></a>
+                    <a name="//apple_ref/swift/Property/orientation" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)orientation">orientation</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -197,7 +190,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Called when card detection is cancelled</p>
+                        <p>Orientation of the card to be detected</p>
+
+<p>The orientation is determined by the size. Setting the orientation to the other available value will flip the width and height of the size.</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
     1.0.0
@@ -210,7 +205,75 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">cardDetectionViewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionViewController.html">CardDetectionViewController</a></span><span class="p">)</span></code></pre>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt"><a href="../Classes/BaseCardDetectionSettings/Orientation.html">Orientation</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)imagePoolSize"></a>
+                    <a name="//apple_ref/swift/Property/imagePoolSize" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(py)imagePoolSize">imagePoolSize</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Number of image samples the camera should collect</p>
+
+<p>The samples in the pool are compared for sharpness and the sharpest one is de-warped and returned.</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.1.0
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">imagePoolSize</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(im)initWithWidth:height:"></a>
+                    <a name="//apple_ref/swift/Method/init(width:height:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(im)initWithWidth:height:">init(width:height:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializer</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.0.0
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -221,12 +284,24 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>viewController</em>
+                                <em>width</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>View controller that was used for card detection</p>
+                                  <p>Width of the card (units don&rsquo;t matter)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>height</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Height of the card (units don&rsquo;t matter)</p>
                                 </div>
                               </td>
                             </tr>
@@ -239,9 +314,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)qualityOfImage:"></a>
-                    <a name="//apple_ref/swift/Method/qualityOfImage(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)qualityOfImage:">qualityOfImage(_:)</a>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(im)init"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BaseCardDetectionSettings(im)init">init()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -249,15 +324,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Called when an image is straightened</p>
+                        <p>Convenience initializer</p>
 
-<p>Implement in your delegate to determine the image quality. By default the quality is determined by
-the sharpness of the image. However, sharpness detection is only available on iOS 13 and newer.
-If you wish to keep the sharpness detection and implement your own image quality scoring for iOS 12
-and older return <code>nil</code> on iOS 13 and your score on iOS 12 and older.</p>
+<p>Initializes settings with ISO ID-1 dimensions</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.3.0
+    1.4.0
 
 </div>
 
@@ -267,32 +339,9 @@ and older return <code>nil</code> on iOS 13 and your score on iOS 12 and older.<
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">qualityOfImage</span><span class="p">(</span><span class="n">_</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">CGImage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">NSNumber</span><span class="p">?</span></code></pre>
+<span class="kd">public</span> <span class="kd">convenience</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>image</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Image</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Score representing the quality of the image (higher score is better than lower)</p>
                       </div>
                     </section>
                   </div>

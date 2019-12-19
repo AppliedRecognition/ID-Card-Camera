@@ -29,21 +29,13 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         return queue
     }()
     
-    lazy var barcodeDetectionRequest: VNDetectBarcodesRequest = {
-        let request = VNDetectBarcodesRequest(completionHandler: self.didDetectBarcodes)
-        if VNDetectBarcodesRequest.supportedSymbologies.contains(.PDF417) {
-            request.symbologies = [VNBarcodeSymbology.PDF417]
-        }
-        return request
-    }()
-    
     lazy var device: AVCaptureDevice? = {
         return AVCaptureDevice.default(.builtInWideAngleCamera , for: .video, position: .back)
     }()
     
     var imageOrientation: CGImagePropertyOrientation = .right
     
-    var delegate: CardDetectionSessionHandlerDelegate?
+    weak var delegate: CardDetectionSessionHandlerDelegate?
     
     var isTorchAvailable: Bool {
         guard let device = self.device else {
@@ -51,7 +43,10 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         }
         return device.hasTorch && device.isTorchAvailable
     }
-    var torchLevel: Float = 0.1
+    
+    var cardDetectionSettings: BaseCardDetectionSettings?
+    var barcodeDetectionSettings: BaseBarcodeDetectionSettings?
+    var torchSettings: TorchSettings?
     
     var imageTransform: CGAffineTransform {
         switch self.imageOrientation {
@@ -59,41 +54,6 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
             return CGAffineTransform(scaleX: self.captureLayer.bounds.width, y: 0-self.captureLayer.bounds.height).concatenating(CGAffineTransform(translationX: 0, y: self.captureLayer.bounds.height))
         default:
             return CGAffineTransform(scaleX: 0-self.captureLayer.bounds.width, y: self.captureLayer.bounds.height).concatenating(CGAffineTransform(translationX: self.captureLayer.bounds.width, y: 0))
-        }
-    }
-    
-    func didDetectRectangles(request: VNRequest, error: Error?) {
-        DispatchQueue.main.async {
-            while let shapeLayer = self.captureLayer.superlayer?.sublayers?.first(where: { $0 is CAShapeLayer }) {
-                shapeLayer.removeFromSuperlayer()
-            }
-            guard let rect = request.results?.first as? VNRectangleObservation else {
-                return
-            }
-            let transform = self.imageTransform
-            let path = UIBezierPath()
-            path.move(to: rect.bottomLeft.applying(transform))
-            path.addLine(to: rect.topLeft.applying(transform))
-            path.addLine(to: rect.topRight.applying(transform))
-            path.addLine(to: rect.bottomRight.applying(transform))
-            path.close()
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.frame = self.captureLayer.frame
-            shapeLayer.path = path.cgPath
-            shapeLayer.fillColor = nil
-            shapeLayer.strokeColor = UIColor.red.cgColor
-            shapeLayer.lineWidth = 4
-            self.captureLayer.superlayer?.addSublayer(shapeLayer)
-        }
-    }
-    
-    func didDetectBarcodes(request: VNRequest, error: Error?) {
-        guard let barcode = (request.results?.first(where: { $0 is VNBarcodeObservation }) as? VNBarcodeObservation)?.payloadStringValue?.data(using: .utf8) else {
-            return
-        }
-        DispatchQueue.main.async {
-            self.delegate?.sessionHandler(self, didDetectBarcodeData: barcode)
-            self.delegate = nil
         }
     }
     
@@ -159,7 +119,11 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
             do {
                 try device.lockForConfiguration()
                 if on {
-                    try device.setTorchModeOn(level: self.torchLevel)
+                    if let torchLevel = self.torchSettings?.torchLevel {
+                        try device.setTorchModeOn(level: torchLevel)
+                    } else {
+                        device.torchMode = .on
+                    }
                 } else {
                     device.torchMode = .off
                 }
@@ -205,6 +169,22 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         return rectangleDetectionRequest
     }
     
+    func barcodeDetectionRequest(settings: BaseBarcodeDetectionSettings) -> VNDetectBarcodesRequest? {
+        guard let delegate = self.delegate, delegate.shouldDetectBarcodeWithSessionHandler(self) else {
+            return nil
+        }
+        let request = VNDetectBarcodesRequest { request, error in
+            guard let barcodes = request.results?.compactMap({ $0 as? VNBarcodeObservation }), !barcodes.isEmpty else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.delegate?.sessionHandler(self, didDetectBarcodes: barcodes)
+            }
+        }
+        request.symbologies = settings.barcodeSymbologies
+        return request
+    }
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if let adjustingFocus = self.device?.isAdjustingFocus, adjustingFocus {
             return
@@ -226,8 +206,8 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
         if let rectangleDetectionRequest = self.rectangleDetectionRequest(withPixelBuffer: pixelBuffer) {
             requests.append(rectangleDetectionRequest)
         }
-        if delegate.shouldDetectBarcodeWithSessionHandler(self) {
-            requests.append(self.barcodeDetectionRequest)
+        if delegate.shouldDetectBarcodeWithSessionHandler(self), let settings = self.barcodeDetectionSettings, let request = self.barcodeDetectionRequest(settings: settings) {
+            requests.append(request)
         }
         if !requests.isEmpty {
             do {
@@ -239,10 +219,9 @@ class ObjectDetectionSessionHandler: NSObject, AVCaptureVideoDataOutputSampleBuf
     }
 }
 
-@available(iOS 11.0, *)
-protocol CardDetectionSessionHandlerDelegate {
+protocol CardDetectionSessionHandlerDelegate: class {
     func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectCardInImage image: CGImage, withTopLeftCorner topLeftCorner: CGPoint, topRightCorner: CGPoint, bottomRightCorner: CGPoint, bottomLeftCorner: CGPoint, perspectiveCorrectionParams: [String:CIVector], sharpness: Float?)
-    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectBarcodeData data: Data)
+    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectBarcodes barcodes: [VNBarcodeObservation])
     func shouldDetectCardImageWithSessionHandler(_ handler: ObjectDetectionSessionHandler) -> Bool
     func shouldDetectBarcodeWithSessionHandler(_ handler: ObjectDetectionSessionHandler) -> Bool
 }

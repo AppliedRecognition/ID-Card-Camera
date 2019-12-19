@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardDetectionViewControllerDelegate Protocol Reference</title>
+    <title>CardAndBarcodeDetectionViewControllerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/CardDetectionViewControllerDelegate" class="dashAnchor"></a>
-    <a title="CardDetectionViewControllerDelegate Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/CardAndBarcodeDetectionViewControllerDelegate" class="dashAnchor"></a>
+    <a title="CardAndBarcodeDetectionViewControllerDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">IDCardCamera Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">IDCardCamera Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CardDetectionViewControllerDelegate Protocol Reference
+        CardAndBarcodeDetectionViewControllerDelegate Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,18 +89,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardDetectionViewControllerDelegate</h1>
+            <h1>CardAndBarcodeDetectionViewControllerDelegate</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardAndBarcodeDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Card detection view controller delegate</p>
+            <p>Delegate for combined detection of front and back of the card</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -111,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewController:didDetectCard:withSettings:"></a>
-                    <a name="//apple_ref/swift/Method/cardDetectionViewController(_:didDetectCard:withSettings:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewController:didDetectCard:withSettings:">cardDetectionViewController(_:didDetectCard:withSettings:)</a>
+                    <a name="/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)cardAndBarcodeDetectionViewController:didDetectCard:andBarcodes:withSettings:"></a>
+                    <a name="//apple_ref/swift/Method/cardAndBarcodeDetectionViewController(_:didDetectCard:andBarcodes:withSettings:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)cardAndBarcodeDetectionViewController:didDetectCard:andBarcodes:withSettings:">cardAndBarcodeDetectionViewController(_:didDetectCard:andBarcodes:withSettings:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -121,10 +121,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Called when card detection succeeds</p>
+                        <p>Called when the detection finishes</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -134,7 +134,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">func</span> <span class="nf">cardDetectionViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionViewController.html">CardDetectionViewController</a></span><span class="p">,</span> <span class="n">didDetectCard</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">CGImage</span><span class="p">,</span> <span class="n">withSettings</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionSettings.html">CardDetectionSettings</a></span><span class="p">)</span></code></pre>
+<span class="kd">func</span> <span class="nf">cardAndBarcodeDetectionViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardAndBarcodeDetectionViewController.html">CardAndBarcodeDetectionViewController</a></span><span class="p">,</span> <span class="n">didDetectCard</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">CGImage</span><span class="p">,</span> <span class="n">andBarcodes</span> <span class="nv">barcodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">VNBarcodeObservation</span><span class="p">],</span> <span class="n">withSettings</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardAndBarcodeDetectionSettings.html">CardAndBarcodeDetectionSettings</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -150,7 +150,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>View controller that detected the card</p>
+                                  <p>View controller that detected the card and barcodes</p>
                                 </div>
                               </td>
                             </tr>
@@ -162,7 +162,19 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Image of the detected card straightened to fit the rectangle specified in settings</p>
+                                  <p>Image of the front of the detected card straightened to fit the rectangle specified in settings</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>barcodes</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Barcodes detected in the session (empty array if user skips the barcode detection)</p>
                                 </div>
                               </td>
                             </tr>
@@ -174,7 +186,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>Card detection settings</p>
+                                  <p>Settings used for the card and barcode detection</p>
                                 </div>
                               </td>
                             </tr>
@@ -187,9 +199,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewControllerDidCancel:"></a>
-                    <a name="//apple_ref/swift/Method/cardDetectionViewControllerDidCancel(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)cardDetectionViewControllerDidCancel:">cardDetectionViewControllerDidCancel(_:)</a>
+                    <a name="/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)cardAndBarcodeDetectionViewControllerDidCancel:"></a>
+                    <a name="//apple_ref/swift/Method/cardAndBarcodeDetectionViewControllerDidCancel(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)cardAndBarcodeDetectionViewControllerDidCancel:">cardAndBarcodeDetectionViewControllerDidCancel(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -197,10 +209,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Called when card detection is cancelled</p>
+                        <p>Called when the detection is cancelled</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -210,7 +222,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">cardDetectionViewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionViewController.html">CardDetectionViewController</a></span><span class="p">)</span></code></pre>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">cardAndBarcodeDetectionViewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardAndBarcodeDetectionViewController.html">CardAndBarcodeDetectionViewController</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -226,7 +238,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>View controller that was used for card detection</p>
+                                  <p>View controller that was used for detection</p>
                                 </div>
                               </td>
                             </tr>
@@ -239,9 +251,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)qualityOfImage:"></a>
+                    <a name="/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)qualityOfImage:"></a>
                     <a name="//apple_ref/swift/Method/qualityOfImage(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardDetectionViewControllerDelegate(im)qualityOfImage:">qualityOfImage(_:)</a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate(im)qualityOfImage:">qualityOfImage(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,7 +269,7 @@ If you wish to keep the sharpness detection and implement your own image quality
 and older return <code>nil</code> on iOS 13 and your score on iOS 12 and older.</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.3.0
+    1.4.0
 
 </div>
 

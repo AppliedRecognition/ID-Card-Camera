@@ -47,3 +47,5 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate {
 ~~~
 
 ## [API documentation](https://appliedrecognition.github.io/ID-Card-Camera/)
+
+## [Change log](./CHANGELOG.md)

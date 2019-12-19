@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import Vision
 
-public class ObjectDetectionViewController: UIViewController, CardDetectionSessionHandlerDelegate {
+public class ObjectDetectionViewController: UIViewController, CardDetectionSessionHandlerDelegate, UIAdaptivePresentationControllerDelegate {
     
     let sessionHandler = ObjectDetectionSessionHandler()
     
@@ -21,10 +22,6 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
     
     @IBOutlet var cameraPreview: UIView!
     @IBOutlet var torchImageView: UIImageView!
-    
-    var torchLevel: Float {
-        return 0.1
-    }
     
     @IBAction func toggleTorch(_ sender: UIGestureRecognizer) {
         if !self.sessionHandler.isTorchAvailable {
@@ -39,13 +36,13 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
             torchOn = true
             imageName = "torch_off"
         }
-        self.sessionHandler.torchLevel = self.torchLevel
         self.sessionHandler.toggleTorch(on: torchOn)
         self.torchImageView.image = UIImage(named: imageName, in: Bundle(for: type(of: self)), compatibleWith: nil)
     }
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.presentationController?.delegate = self
         self.cameraPreview.layer.addSublayer(self.sessionHandler.captureLayer)
         self.torchImageView.isHidden = !self.sessionHandler.isTorchAvailable
     }
@@ -81,7 +78,7 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
             let alert = UIAlertController(title: "Camera permission required", message: "ID capture requires camera permission. Please enable camera for \(appName) in settings", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                 if let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL) {
-                    UIApplication.shared.open(settingsURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { _ in
+                    UIApplication.shared.open(settingsURL, options: [:], completionHandler: { _ in
                         self.cancel()
                     })
                 } else {
@@ -143,7 +140,7 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
         
     }
     
-    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectBarcodeData data: Data) {
+    func sessionHandler(_ handler: ObjectDetectionSessionHandler, didDetectBarcodes barcodes: [VNBarcodeObservation]) {
         
     }
     
@@ -155,12 +152,23 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
         return false
     }
     
-    func cancel() {
+    @IBAction func cancel() {
+        dismiss()
+    }
+    
+    // MARK: -
+    
+    func dismiss() {
+        if let navController = self.navigationController {
+            navController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: - Adaptive presentation controller delegate
+    
+    public func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

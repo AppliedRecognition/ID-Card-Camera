@@ -31,10 +31,28 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/CardDetectionSettings.html">CardDetectionSettings</a>
+                <a href="Classes/BarcodeDetectionSettings.html">BarcodeDetectionSettings</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/CardDetectionSettings/Orientation.html">– Orientation</a>
+                <a href="Classes/BarcodeDetectionViewController.html">BarcodeDetectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BaseBarcodeDetectionSettings.html">BaseBarcodeDetectionSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BaseCardDetectionSettings.html">BaseCardDetectionSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BaseCardDetectionSettings/Orientation.html">– Orientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CardAndBarcodeDetectionSettings.html">CardAndBarcodeDetectionSettings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CardAndBarcodeDetectionViewController.html">CardAndBarcodeDetectionViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/CardDetectionSettings.html">CardDetectionSettings</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/CardDetectionViewController.html">CardDetectionViewController</a>
@@ -42,10 +60,27 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/BarcodeDetectionSettingsError.html">BarcodeDetectionSettingsError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Protocols/BarcodeDetectionViewControllerDelegate.html">BarcodeDetectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/CardAndBarcodeDetectionViewControllerDelegate.html">CardAndBarcodeDetectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/CardDetectionViewControllerDelegate.html">CardDetectionViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/TorchSettings.html">TorchSettings</a>
               </li>
             </ul>
           </li>
@@ -59,6 +94,82 @@
 
           </section>
           <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate"></a>
+                    <a name="//apple_ref/swift/Protocol/BarcodeDetectionViewControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate">BarcodeDetectionViewControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Barcode detection view controller delegate</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.4.0
+
+</div>
+
+                        <a href="Protocols/BarcodeDetectionViewControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BarcodeDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate"></a>
+                    <a name="//apple_ref/swift/Protocol/CardAndBarcodeDetectionViewControllerDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)CardAndBarcodeDetectionViewControllerDelegate">CardAndBarcodeDetectionViewControllerDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delegate for combined detection of front and back of the card</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.4.0
+
+</div>
+
+                        <a href="Protocols/CardAndBarcodeDetectionViewControllerDelegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CardAndBarcodeDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <ul>
                 <li class="item">
@@ -97,10 +208,48 @@
                 </li>
               </ul>
             </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@IDCardCamera@objc(pl)TorchSettings"></a>
+                    <a name="//apple_ref/swift/Protocol/TorchSettings" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)TorchSettings">TorchSettings</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Protocol describing torch settings</p>
+<div class="aside aside-since">
+    <p class="aside-title">Since</p>
+    1.4.0
+
+</div>
+
+                        <a href="Protocols/TorchSettings.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TorchSettings</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-12-18)</p>
+          <p>&copy; 2019 <a class="link" href="https://github.com/AppliedRecognition" target="_blank" rel="external">Applied Recognition, Inc.</a>. All rights reserved. (Last updated: 2019-12-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

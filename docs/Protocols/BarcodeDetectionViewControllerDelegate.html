@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardDetectionViewController Class Reference</title>
+    <title>BarcodeDetectionViewControllerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/CardDetectionViewController" class="dashAnchor"></a>
-    <a title="CardDetectionViewController Class Reference"></a>
+    <a name="//apple_ref/swift/Protocol/BarcodeDetectionViewControllerDelegate" class="dashAnchor"></a>
+    <a title="BarcodeDetectionViewControllerDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">IDCardCamera Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">IDCardCamera Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CardDetectionViewController Class Reference
+        BarcodeDetectionViewControllerDelegate Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,18 +89,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardDetectionViewController</h1>
+            <h1>BarcodeDetectionViewControllerDelegate</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardDetectionViewController</span> <span class="p">:</span> <span class="kt">BaseCardDetectionViewController</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BarcodeDetectionViewControllerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>View controller used to run a camera session that collects an image of an card with a given aspect ratio and returns an image with corrected perspective</p>
+            <p>Barcode detection view controller delegate</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -111,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)delegate"></a>
-                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)delegate">delegate</a>
+                    <a name="/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate(im)barcodeDetectionViewController:didDetectBarcodes:"></a>
+                    <a name="//apple_ref/swift/Method/barcodeDetectionViewController(_:didDetectBarcodes:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate(im)barcodeDetectionViewController:didDetectBarcodes:">barcodeDetectionViewController(_:didDetectBarcodes:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -121,10 +121,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Card detection delegate</p>
+                        <p>Called when barcode detection succeeds</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -134,9 +134,40 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardDetectionViewControllerDelegate.html">CardDetectionViewControllerDelegate</a></span><span class="p">?</span></code></pre>
+<span class="kd">func</span> <span class="nf">barcodeDetectionViewController</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BarcodeDetectionViewController.html">BarcodeDetectionViewController</a></span><span class="p">,</span> <span class="n">didDetectBarcodes</span> <span class="nv">barcodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">VNBarcodeObservation</span><span class="p">])</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>View controller that detected the barcode</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>data</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Raw barcode data</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -144,9 +175,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)settings"></a>
-                    <a name="//apple_ref/swift/Property/settings" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)settings">settings</a>
+                    <a name="/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate(im)barcodeDetectionViewControllerDidCancel:"></a>
+                    <a name="//apple_ref/swift/Method/barcodeDetectionViewControllerDidCancel(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(pl)BarcodeDetectionViewControllerDelegate(im)barcodeDetectionViewControllerDidCancel:">barcodeDetectionViewControllerDidCancel(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -154,10 +185,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Card detection settings</p>
+                        <p>Called when barcode detection is cancelled</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -167,42 +198,28 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionSettings.html">CardDetectionSettings</a></span></code></pre>
+<span class="kd">optional</span> <span class="kd">func</span> <span class="nf">barcodeDetectionViewControllerDidCancel</span><span class="p">(</span><span class="n">_</span> <span class="nv">viewController</span><span class="p">:</span> <span class="kt"><a href="../Classes/BarcodeDetectionViewController.html">BarcodeDetectionViewController</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(im)init"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(im)init">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializer</p>
-<div class="aside aside-since">
-    <p class="aside-title">Since</p>
-    1.0.0
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>viewController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>View controller that was used for barcode detection</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>

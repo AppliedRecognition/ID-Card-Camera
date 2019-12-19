@@ -20,7 +20,7 @@ import UIKit
     /// - Since: 1.0.0
     @objc func cardDetectionViewController(_ viewController: CardDetectionViewController, didDetectCard image: CGImage, withSettings settings: CardDetectionSettings)
     
-    /// Called when card detection fails
+    /// Called when card detection is cancelled
     /// - Parameter viewController: View controller that was used for card detection
     /// - Since: 1.0.0
     @objc optional func cardDetectionViewControllerDidCancel(_ viewController: CardDetectionViewController)

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3196CF23AB8FB5009B8564 /* BarcodeDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196CE23AB8FB5009B8564 /* BarcodeDetectionViewController.swift */; };
+		3B3196D123AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196D023AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift */; };
+		3B3196D323AB91FA009B8564 /* BarcodeDetectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196D223AB91FA009B8564 /* BarcodeDetectionSettings.swift */; };
+		3B3196D723ABC4F8009B8564 /* BarcodeDetectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B3196D623ABC4F8009B8564 /* BarcodeDetectionViewController.xib */; };
+		3B3196D923ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196D823ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift */; };
+		3B3196DB23ABCDC9009B8564 /* BaseCardDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196DA23ABCDC9009B8564 /* BaseCardDetectionViewController.swift */; };
+		3B3196DD23ABD4AB009B8564 /* TorchSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196DC23ABD4AB009B8564 /* TorchSettings.swift */; };
+		3B3196DF23ABD61B009B8564 /* CardAndBarcodeDetectionViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196DE23ABD61B009B8564 /* CardAndBarcodeDetectionViewControllerDelegate.swift */; };
+		3B3196E123ABD6D9009B8564 /* CardAndBarcodeDetectionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3196E023ABD6D9009B8564 /* CardAndBarcodeDetectionSettings.swift */; };
 		3B3FF9A823A19E9F00156A59 /* IDCardCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3FF9A623A19E9F00156A59 /* IDCardCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3B3FF9B723A19EDC00156A59 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B3FF9AE23A19EDB00156A59 /* Media.xcassets */; };
 		3B3FF9B823A19EDC00156A59 /* CardDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3FF9AF23A19EDB00156A59 /* CardDetectionViewController.swift */; };
@@ -51,6 +60,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3B3196CE23AB8FB5009B8564 /* BarcodeDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionViewController.swift; sourceTree = "<group>"; };
+		3B3196D023AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3B3196D223AB91FA009B8564 /* BarcodeDetectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionSettings.swift; sourceTree = "<group>"; };
+		3B3196D623ABC4F8009B8564 /* BarcodeDetectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeDetectionViewController.xib; sourceTree = "<group>"; };
+		3B3196D823ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAndBarcodeDetectionViewController.swift; sourceTree = "<group>"; };
+		3B3196DA23ABCDC9009B8564 /* BaseCardDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardDetectionViewController.swift; sourceTree = "<group>"; };
+		3B3196DC23ABD4AB009B8564 /* TorchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchSettings.swift; sourceTree = "<group>"; };
+		3B3196DE23ABD61B009B8564 /* CardAndBarcodeDetectionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAndBarcodeDetectionViewControllerDelegate.swift; sourceTree = "<group>"; };
+		3B3196E023ABD6D9009B8564 /* CardAndBarcodeDetectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAndBarcodeDetectionSettings.swift; sourceTree = "<group>"; };
 		3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IDCardCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3FF9A623A19E9F00156A59 /* IDCardCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCardCamera.h; sourceTree = "<group>"; };
 		3B3FF9A723A19E9F00156A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,17 +137,26 @@
 		3B3FF9A523A19E9F00156A59 /* IDCardCamera */ = {
 			isa = PBXGroup;
 			children = (
+				3B3196D223AB91FA009B8564 /* BarcodeDetectionSettings.swift */,
+				3B3196CE23AB8FB5009B8564 /* BarcodeDetectionViewController.swift */,
+				3B3196D623ABC4F8009B8564 /* BarcodeDetectionViewController.xib */,
+				3B3196D023AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift */,
+				3B3196DA23ABCDC9009B8564 /* BaseCardDetectionViewController.swift */,
+				3B3196E023ABD6D9009B8564 /* CardAndBarcodeDetectionSettings.swift */,
+				3B3196D823ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift */,
+				3B3196DE23ABD61B009B8564 /* CardAndBarcodeDetectionViewControllerDelegate.swift */,
 				3B3FF9B623A19EDC00156A59 /* CardDetectionSettings.swift */,
 				3B3FF9AF23A19EDB00156A59 /* CardDetectionViewController.swift */,
 				3B3FF9B223A19EDB00156A59 /* CardDetectionViewController.xib */,
 				3B3FF9B323A19EDB00156A59 /* CardDetectionViewControllerDelegate.swift */,
 				3B3FF9B123A19EDB00156A59 /* CMSampleBuffer+CGImage.swift */,
 				3B3FF9B023A19EDB00156A59 /* DetectionOperations.swift */,
+				3B3FF9A623A19E9F00156A59 /* IDCardCamera.h */,
+				3B3FF9A723A19E9F00156A59 /* Info.plist */,
 				3B3FF9AE23A19EDB00156A59 /* Media.xcassets */,
 				3B3FF9B423A19EDB00156A59 /* ObjectDetectionSessionHandler.swift */,
 				3B3FF9B523A19EDB00156A59 /* ObjectDetectionViewController.swift */,
-				3B3FF9A623A19E9F00156A59 /* IDCardCamera.h */,
-				3B3FF9A723A19E9F00156A59 /* Info.plist */,
+				3B3196DC23ABD4AB009B8564 /* TorchSettings.swift */,
 			);
 			path = IDCardCamera;
 			sourceTree = "<group>";
@@ -249,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3FF9BB23A19EDC00156A59 /* CardDetectionViewController.xib in Resources */,
+				3B3196D723ABC4F8009B8564 /* BarcodeDetectionViewController.xib in Resources */,
 				3B3FF9B723A19EDC00156A59 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,10 +301,18 @@
 				3B3FF9B823A19EDC00156A59 /* CardDetectionViewController.swift in Sources */,
 				3B3FF9BF23A19EDC00156A59 /* CardDetectionSettings.swift in Sources */,
 				3B3FF9BD23A19EDC00156A59 /* ObjectDetectionSessionHandler.swift in Sources */,
+				3B3196DD23ABD4AB009B8564 /* TorchSettings.swift in Sources */,
 				3B3FF9B923A19EDC00156A59 /* DetectionOperations.swift in Sources */,
 				3B3FF9BE23A19EDC00156A59 /* ObjectDetectionViewController.swift in Sources */,
+				3B3196E123ABD6D9009B8564 /* CardAndBarcodeDetectionSettings.swift in Sources */,
+				3B3196D323AB91FA009B8564 /* BarcodeDetectionSettings.swift in Sources */,
+				3B3196CF23AB8FB5009B8564 /* BarcodeDetectionViewController.swift in Sources */,
 				3B3FF9BA23A19EDC00156A59 /* CMSampleBuffer+CGImage.swift in Sources */,
+				3B3196D923ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift in Sources */,
+				3B3196DF23ABD61B009B8564 /* CardAndBarcodeDetectionViewControllerDelegate.swift in Sources */,
+				3B3196DB23ABCDC9009B8564 /* BaseCardDetectionViewController.swift in Sources */,
 				3B3FF9BC23A19EDC00156A59 /* CardDetectionViewControllerDelegate.swift in Sources */,
+				3B3196D123AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +407,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +465,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.4.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

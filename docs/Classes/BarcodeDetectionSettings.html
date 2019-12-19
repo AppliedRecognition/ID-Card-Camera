@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardDetectionViewController Class Reference</title>
+    <title>BarcodeDetectionSettings Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/CardDetectionViewController" class="dashAnchor"></a>
-    <a title="CardDetectionViewController Class Reference"></a>
+    <a name="//apple_ref/swift/Class/BarcodeDetectionSettings" class="dashAnchor"></a>
+    <a title="BarcodeDetectionSettings Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">IDCardCamera Docs</a></p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">IDCardCamera Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CardDetectionViewController Class Reference
+        BarcodeDetectionSettings Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,18 +89,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardDetectionViewController</h1>
+            <h1>BarcodeDetectionSettings</h1>
               <div class="declaration">
                 <div class="language">
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardDetectionViewController</span> <span class="p">:</span> <span class="kt">BaseCardDetectionViewController</span></code></pre>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">BarcodeDetectionSettings</span> <span class="p">:</span> <span class="kt"><a href="../Classes/BaseBarcodeDetectionSettings.html">BaseBarcodeDetectionSettings</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/TorchSettings.html">TorchSettings</a></span></code></pre>
 
                 </div>
               </div>
-            <p>View controller used to run a camera session that collects an image of an card with a given aspect ratio and returns an image with corrected perspective</p>
+            <p>Barcode detection settings</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -111,9 +111,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)delegate"></a>
-                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)delegate">delegate</a>
+                    <a name="/c:@M@IDCardCamera@objc(cs)BarcodeDetectionSettings(py)torchLevel"></a>
+                    <a name="//apple_ref/swift/Property/torchLevel" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)BarcodeDetectionSettings(py)torchLevel">torchLevel</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -121,10 +121,12 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Card detection delegate</p>
+                        <p>Set the torch level when the user turns the torch on</p>
+
+<p>Range <code>0.0</code> (darkest) – <code>1</code> (brightest). Default value is <code>0.1</code>.</p>
 <div class="aside aside-since">
     <p class="aside-title">Since</p>
-    1.0.0
+    1.4.0
 
 </div>
 
@@ -134,73 +136,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/CardDetectionViewControllerDelegate.html">CardDetectionViewControllerDelegate</a></span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)settings"></a>
-                    <a name="//apple_ref/swift/Property/settings" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(py)settings">settings</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Card detection settings</p>
-<div class="aside aside-since">
-    <p class="aside-title">Since</p>
-    1.0.0
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">var</span> <span class="nv">settings</span><span class="p">:</span> <span class="kt"><a href="../Classes/CardDetectionSettings.html">CardDetectionSettings</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(im)init"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@IDCardCamera@objc(cs)CardDetectionViewController(im)init">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Initializer</p>
-<div class="aside aside-since">
-    <p class="aside-title">Since</p>
-    1.0.0
-
-</div>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="k">override</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">torchLevel</span><span class="p">:</span> <span class="kt">Float</span></code></pre>
 
                         </div>
                       </div>

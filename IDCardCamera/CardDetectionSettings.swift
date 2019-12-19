@@ -10,7 +10,18 @@ import UIKit
 
 /// Card detection session settings
 /// - Since: 1.0.0
-@objc public class CardDetectionSettings: NSObject {
+@objc public class CardDetectionSettings: BaseCardDetectionSettings, TorchSettings {
+    
+    /// Set the torch level when the user turns the torch on
+    ///
+    /// Range `0.0` (darkest) – `1` (brightest). Default value is `0.1`.
+    /// - Since: 1.2.0
+    @objc public var torchLevel: Float = 0.1
+}
+
+/// Base card detection settings
+/// - Since: 1.4.0
+@objc public class BaseCardDetectionSettings: NSObject {
     
     /// Card orientation
     /// - Since: 1.0.0
@@ -53,13 +64,20 @@ import UIKit
     /// - Since: 1.1.0
     @objc public var imagePoolSize: Int = 5
     
-    /// Set the torch level when the user turns the torch on
-    ///
-    /// Range `0.0` (darkest) – `1` (brightest). Default value is `0.1`.
-    /// - Since: 1.2.0
-    @objc public var torchLevel: Float = 0.1
-    
+    /// Initializer
+    /// - Parameters:
+    ///   - width: Width of the card (units don't matter)
+    ///   - height: Height of the card (units don't matter)
+    /// - Since: 1.0.0
     @objc public init(width: CGFloat, height: CGFloat) {
         self.size = CGSize(width: width, height: height)
+    }
+    
+    /// Convenience initializer
+    ///
+    /// Initializes settings with ISO ID-1 dimensions
+    /// - Since: 1.4.0
+    @objc public convenience override init() {
+        self.init(width: 85.6, height: 53.98)
     }
 }
