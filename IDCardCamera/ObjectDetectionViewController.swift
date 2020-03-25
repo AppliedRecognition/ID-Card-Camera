@@ -77,13 +77,7 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
             }
             let alert = UIAlertController(title: "Camera permission required", message: "ID capture requires camera permission. Please enable camera for \(appName) in settings", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                if let settingsURL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(settingsURL) {
-                    UIApplication.shared.open(settingsURL, options: [:], completionHandler: { _ in
-                        self.cancel()
-                    })
-                } else {
-                    self.cancel()
-                }
+                self.cancel()
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
                 self.cancel()
@@ -118,14 +112,14 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
     func updateCameraOrientation() {
         if let videoPreviewLayerConnection = self.sessionHandler.captureLayer.connection {
             let avCaptureVideoOrientation: AVCaptureVideoOrientation
-            switch UIApplication.shared.statusBarOrientation {
+            switch UIDevice.current.orientation {
             case .portraitUpsideDown:
                 avCaptureVideoOrientation = .portraitUpsideDown
                 self.sessionHandler.imageOrientation = .left
-            case .landscapeLeft:
+            case .landscapeRight:
                 avCaptureVideoOrientation = .landscapeLeft
                 self.sessionHandler.imageOrientation = .up
-            case .landscapeRight:
+            case .landscapeLeft:
                 avCaptureVideoOrientation = .landscapeRight
                 self.sessionHandler.imageOrientation = .down
             default:

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'ID-Card-Camera'
   s.module_name      = 'IDCardCamera'
-  s.version          = '1.4.0'
+  s.version          = '1.4.1'
   s.summary          = 'Detects an ID card in a camera view and returns the de-warped image of the ID card.'
   s.homepage         = 'https://github.com/AppliedRecognition'
   s.license          = { :type => 'MIT', :file => 'LICENCE' }
