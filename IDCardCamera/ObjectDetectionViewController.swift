@@ -112,14 +112,15 @@ public class ObjectDetectionViewController: UIViewController, CardDetectionSessi
     func updateCameraOrientation() {
         if let videoPreviewLayerConnection = self.sessionHandler.captureLayer.connection {
             let avCaptureVideoOrientation: AVCaptureVideoOrientation
-            switch UIDevice.current.orientation {
-            case .portraitUpsideDown:
+            let point = UIScreen.main.coordinateSpace.convert(CGPoint.zero, to: UIScreen.main.fixedCoordinateSpace)
+            switch (point.x, point.y) {
+            case let (x, y) where x != 0 && y != 0:
                 avCaptureVideoOrientation = .portraitUpsideDown
                 self.sessionHandler.imageOrientation = .left
-            case .landscapeRight:
+            case let (0, y) where y != 0:
                 avCaptureVideoOrientation = .landscapeLeft
                 self.sessionHandler.imageOrientation = .up
-            case .landscapeLeft:
+            case let (x, 0) where x != 0:
                 avCaptureVideoOrientation = .landscapeRight
                 self.sessionHandler.imageOrientation = .down
             default:
