@@ -14,6 +14,7 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, Bar
     
     @IBOutlet var scanButton: UIButton!
     @IBOutlet var cardImageView: UIImageView!
+    @IBOutlet var doneButton: UIButton!
     
     @IBAction func startIDCardScan() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -44,6 +45,12 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, Bar
         self.present(alert, animated: true)
     }
     
+    @IBAction func done() {
+        self.cardImageView.isHidden = true
+        self.doneButton.isHidden = true
+        self.scanButton.isHidden = false
+    }
+    
     func cardDetectionViewController(_ viewController: CardDetectionViewController, didDetectCard image: CGImage, withSettings settings: CardDetectionSettings) {
         self.displayDetectedImage(image, aspectRatio: settings.size.width/settings.size.height)
     }
@@ -60,6 +67,7 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, Bar
     func barcodeDetectionViewController(_ viewController: BarcodeDetectionViewController, didDetectBarcodes barcodes: [VNBarcodeObservation]) {
         self.scanButton.isHidden = false
         self.cardImageView.isHidden = true
+        self.doneButton.isHidden = true
         self.displayBarcodes(barcodes)
     }
     
@@ -71,10 +79,11 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate, Bar
     func displayDetectedImage(_ image: CGImage, aspectRatio: CGFloat) {
         self.scanButton.isHidden = true
         self.cardImageView.isHidden = false
+        self.doneButton.isHidden = false
         if let aspectRatioConstraint = self.cardImageView.constraints.first(where: { $0.identifier == "aspectRatio" }) {
             self.cardImageView.removeConstraint(aspectRatioConstraint)
         }
-        let aspectRatioConstraint = NSLayoutConstraint(item: self.cardImageView, attribute: .width, relatedBy: .equal, toItem: self.cardImageView, attribute: .height, multiplier: aspectRatio, constant: 0)
+        let aspectRatioConstraint = NSLayoutConstraint(item: self.cardImageView!, attribute: .width, relatedBy: .equal, toItem: self.cardImageView, attribute: .height, multiplier: aspectRatio, constant: 0)
         aspectRatioConstraint.identifier = "aspectRatio"
         self.cardImageView.addConstraint(aspectRatioConstraint)
         let uiImage = UIImage(cgImage: image)
