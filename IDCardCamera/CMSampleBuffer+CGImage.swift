@@ -24,8 +24,11 @@ extension CVImageBuffer {
         let outBytesPerRow: Int = bytesPerRow / 4
         // Calculate the size of the rotated image buffer
         let destSize = outBytesPerRow * Int(height) * MemoryLayout<UInt8>.size
-        var planar8 = [UInt8](repeating: 0, count: destSize)
-        var planar8Buffer = vImage_Buffer(data: &planar8, height: height, width: width, rowBytes: outBytesPerRow)
+        let ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: destSize)
+        defer {
+            ptr.deallocate()
+        }
+        var planar8Buffer = vImage_Buffer(data: ptr, height: height, width: width, rowBytes: outBytesPerRow)
         var argbBuffer = vImage_Buffer(data: srcBuff, height: height, width: width, rowBytes: bytesPerRow)
         let divisor: Float = 256
         let a: Int16 = 0
@@ -49,10 +52,10 @@ extension CVImageBuffer {
         guard vImageMatrixMultiply_ARGB8888ToPlanar8(&argbBuffer, &planar8Buffer, &matrix, Int32(divisor), nil, 0, numericCast(kvImageNoFlags)) == kvImageNoError else {
             return nil
         }
-        var floatPixels: [Float] = [Float](unsafeUninitializedCapacity: planar8.count) { buffer, initializedCount in
+        var floatPixels: [Float] = [Float](unsafeUninitializedCapacity: destSize) { buffer, initializedCount in
             var floatBuffer = vImage_Buffer(data: buffer.baseAddress, height: planar8Buffer.height, width: planar8Buffer.width, rowBytes: outBytesPerRow * MemoryLayout<Float>.size)
             vImageConvert_Planar8toPlanarF(&planar8Buffer, &floatBuffer, 0, 255, vImage_Flags(kvImageNoFlags))
-            initializedCount = planar8.count
+            initializedCount = destSize
         }
         let laplacian: [Float] = [-1, -1, -1,
                                   -1,  8, -1,
@@ -105,11 +108,14 @@ extension CVImageBuffer {
             return nil
         }
         // Allocate the rotated image buffer
-        var dstBuff: [UInt8] = [UInt8](repeating: 0, count: destSize)
+        let dstBuff = UnsafeMutablePointer<UInt8>.allocate(capacity: destSize)
+        defer {
+            dstBuff.deallocate()
+        }
         // Create the input vImage buffer
         var inBuff = vImage_Buffer(data: srcBuff, height: height, width: width, rowBytes: bytesPerRow)
         // Create the output vImage buffer
-        var outBuff = vImage_Buffer(data: &dstBuff, height: outHeight, width: outWidth, rowBytes: outBytesPerRow)
+        var outBuff = vImage_Buffer(data: dstBuff, height: outHeight, width: outWidth, rowBytes: outBytesPerRow)
         // Set the background colour to black
         var bg: UInt8 = 0
         // Rotate the image using the Accelerate framework (very fast)
