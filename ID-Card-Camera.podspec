@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/AppliedRecognition/ID-Card-Camera.git', :tag => "v#{s.version}" }
   s.platform	     = :ios, '11.0'
   s.swift_version    = '5'
-  s.source_files = 'Sources/IDCardCamera*.swift'
-  s.exclude_files = [ 'Sources/BundleHelperSPM.swift' ]
+  s.source_files = 'Sources/IDCardCamera/*.swift'
+  s.exclude_files = [ 'Sources/IDCardCamera/BundleHelperSPM.swift' ]
   s.resource = 'Sources/IDCardCamera/Resources/*.{xcassets,xib}'
   s.resource_bundle = { 'IDCardCameraResources' => 'Sources/IDCardCamera/Resources/*.{xcassets,xib}' }
   s.frameworks = 'UIKit', 'Vision', 'Accelerate', 'CoreMedia', 'AVFoundation'
