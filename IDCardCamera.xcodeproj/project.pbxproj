@@ -75,7 +75,7 @@
 		3B3196CE23AB8FB5009B8564 /* BarcodeDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionViewController.swift; sourceTree = "<group>"; };
 		3B3196D023AB904E009B8564 /* BarcodeDetectionViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3B3196D223AB91FA009B8564 /* BarcodeDetectionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeDetectionSettings.swift; sourceTree = "<group>"; };
-		3B3196D623ABC4F8009B8564 /* BarcodeDetectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeDetectionViewController.xib; sourceTree = "<group>"; };
+		3B3196D623ABC4F8009B8564 /* BarcodeDetectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = BarcodeDetectionViewController.xib; path = ../IDCardCamera/Resources/BarcodeDetectionViewController.xib; sourceTree = "<group>"; };
 		3B3196D823ABC9B0009B8564 /* CardAndBarcodeDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAndBarcodeDetectionViewController.swift; sourceTree = "<group>"; };
 		3B3196DA23ABCDC9009B8564 /* BaseCardDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardDetectionViewController.swift; sourceTree = "<group>"; };
 		3B3196DC23ABD4AB009B8564 /* TorchSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TorchSettings.swift; sourceTree = "<group>"; };
@@ -84,11 +84,11 @@
 		3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IDCardCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3FF9A623A19E9F00156A59 /* IDCardCamera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IDCardCamera.h; sourceTree = "<group>"; };
 		3B3FF9A723A19E9F00156A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
-		3B3FF9AE23A19EDB00156A59 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		3B3FF9AE23A19EDB00156A59 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../IDCardCamera/Resources/Media.xcassets; sourceTree = "<group>"; };
 		3B3FF9AF23A19EDB00156A59 /* CardDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetectionViewController.swift; sourceTree = "<group>"; };
 		3B3FF9B023A19EDB00156A59 /* DetectionOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectionOperations.swift; sourceTree = "<group>"; };
 		3B3FF9B123A19EDB00156A59 /* CMSampleBuffer+CGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+CGImage.swift"; sourceTree = "<group>"; };
-		3B3FF9B223A19EDB00156A59 /* CardDetectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardDetectionViewController.xib; sourceTree = "<group>"; };
+		3B3FF9B223A19EDB00156A59 /* CardDetectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CardDetectionViewController.xib; path = ../IDCardCamera/Resources/CardDetectionViewController.xib; sourceTree = "<group>"; };
 		3B3FF9B323A19EDB00156A59 /* CardDetectionViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetectionViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3B3FF9B423A19EDB00156A59 /* ObjectDetectionSessionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionSessionHandler.swift; sourceTree = "<group>"; };
 		3B3FF9B523A19EDB00156A59 /* ObjectDetectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectDetectionViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +217,8 @@
 				3B3FF9AE23A19EDB00156A59 /* Media.xcassets */,
 				3B7AC0D72742AFE9004732A6 /* Info.plist */,
 			);
-			path = IDCardCameraResources;
+			name = IDCardCameraResources;
+			path = Sources/IDCardCameraResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
