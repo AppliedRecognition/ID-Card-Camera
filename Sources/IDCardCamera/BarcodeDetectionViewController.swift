@@ -27,12 +27,7 @@ public class BarcodeDetectionViewController: ObjectDetectionViewController {
     /// - Since: 1.4.0
     @objc public init(settings: BarcodeDetectionSettings) {
         self.settings = settings
-        let bundle = Bundle(for: type(of: self))
-        if let cameraBundleURL = bundle.url(forResource: "IDCardCamera", withExtension: "bundle"), let cameraBundle = Bundle(url: cameraBundleURL) {
-            super.init(nibName: "BarcodeDetectionViewController", bundle: cameraBundle)
-        } else {
-            super.init(nibName: "BarcodeDetectionViewController", bundle: bundle)
-        }
+        super.init(nibName: "BarcodeDetectionViewController", bundle: BundleHelper.moduleBundle)
     }
     
     required init?(coder: NSCoder) {

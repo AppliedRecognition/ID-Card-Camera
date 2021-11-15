@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarcodeDetectionViewController" customModule="IDCardCamera" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BarcodeDetectionViewController" customModule="IDCardCameraResources" customModuleProvider="target">
             <connections>
                 <outlet property="cameraPreview" destination="6no-oc-z6F" id="Fh6-24-Esu"/>
                 <outlet property="torchImageView" destination="EDh-ww-q4V" id="5HW-NT-9rA"/>
@@ -53,7 +53,8 @@
                     </items>
                 </navigationBar>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6no-oc-z6F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4PX-d0-rsC"/>
                 <constraint firstItem="EDh-ww-q4V" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CK2-a8-98H"/>
@@ -65,7 +66,6 @@
                 <constraint firstItem="6no-oc-z6F" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wJB-Aq-3aC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EDh-ww-q4V" secondAttribute="bottom" constant="20" id="ztB-V0-T4Q"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="138.40000000000001" y="151.47783251231527"/>
         </view>
         <tapGestureRecognizer id="w59-p1-WwF">
@@ -76,5 +76,8 @@
     </objects>
     <resources>
         <image name="torch_on" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

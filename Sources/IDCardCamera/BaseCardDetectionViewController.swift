@@ -44,12 +44,7 @@ public class BaseCardDetectionViewController: ObjectDetectionViewController {
     private var collectedImages: [(CGImage,Float)] = []
     
     @objc public init() {
-        let bundle = Bundle(for: type(of: self))
-        if let cameraBundleURL = bundle.url(forResource: "IDCardCamera", withExtension: "bundle"), let cameraBundle = Bundle(url: cameraBundleURL) {
-            super.init(nibName: "CardDetectionViewController", bundle: cameraBundle)
-        } else {
-            super.init(nibName: "CardDetectionViewController", bundle: bundle)
-        }
+        super.init(nibName: "CardDetectionViewController", bundle: BundleHelper.moduleBundle)
     }
     
     required init?(coder: NSCoder) {

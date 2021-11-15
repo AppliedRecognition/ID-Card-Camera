@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardDetectionViewController" customModule="IDCardCamera" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardDetectionViewController" customModule="IDCardCameraResources" customModuleProvider="target">
             <connections>
                 <outlet property="cameraPreview" destination="pvV-Xq-kuM" id="vb9-D4-GNX"/>
                 <outlet property="cardOverlayView" destination="UOT-Ud-9mm" id="YIz-YB-Hh9"/>
@@ -35,16 +35,16 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTX-lS-DQM">
-                    <rect key="frame" x="90.666666666666686" y="381" width="194" height="50"/>
+                    <rect key="frame" x="99.333333333333329" y="383" width="176.33333333333337" height="46"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flip your card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rf9-Y3-EQy">
-                            <rect key="frame" x="16" y="8" width="162" height="34"/>
+                            <rect key="frame" x="16" y="8" width="144.33333333333334" height="30"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Rf9-Y3-EQy" secondAttribute="bottom" constant="8" id="Iib-k8-sek"/>
                         <constraint firstItem="Rf9-Y3-EQy" firstAttribute="top" secondItem="VTX-lS-DQM" secondAttribute="top" constant="8" id="K9R-Es-r9F"/>
@@ -94,7 +94,8 @@
                     </items>
                 </navigationBar>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="pvV-Xq-kuM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="8Mu-d6-DmP"/>
                 <constraint firstItem="abD-Qf-NGJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AjP-IO-aqH"/>
@@ -116,7 +117,6 @@
                     <variation key="heightClass=compact" constant="30"/>
                 </constraint>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
         <tapGestureRecognizer id="b3H-6K-uYN">
@@ -127,5 +127,8 @@
     </objects>
     <resources>
         <image name="torch_on" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
