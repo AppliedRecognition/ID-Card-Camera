@@ -1,27 +1,13 @@
-![Cocoapods](https://img.shields.io/cocoapods/v/ID-Card-Camera.svg)
+# ``IDCardCamera``
 
-# ID Card Camera
+Capture photo page and barcode of ID cards on iOS
+
+## Overview
 
 - Detects an ID card in a camera view and returns the de-warped image of the ID card.
 - Scans PDF417 barcode on the back side of an ID card.
 
-## Installation 
-
-### Using [CocoaPods](https://cocoapods.org/)
-
-Add the following pod in your **Podfile** and run `pod install`.
-
-```ruby
-pod 'ID-Card-Camera', '~> 1.0'
-```
-
-### Using [Swift Package Manager](https://www.swift.org/package-manager/)
-
-- In Xcode select **File -> Add Packages ...** from the top menu. 
-- Enter `https://github.com/AppliedRecognition/ID-Card-Camera.git` in the search bar.
-- Click the **Add Package** button.
-
-## Usage
+### Example Usage
 
 ```swift
 import UIKit
@@ -55,6 +41,23 @@ class ViewController: UIViewController, CardDetectionViewControllerDelegate {
 }
 ```
 
-## [API documentation](https://appliedrecognition.github.io/ID-Card-Camera/)
+## Topics
 
-## [Change log](./CHANGELOG.md)
+### Capturing ID Card Photo Page
+
+- ``CardDetectionViewController``
+- ``CardDetectionSettings``
+- ``CardDetectionViewControllerDelegate``
+
+### Capturing ID Card Barcode
+
+- ``BarcodeDetectionViewController``
+- ``BarcodeDetectionSettings``
+- ``BarcodeDetectionViewControllerDelegate``
+- ``BarcodeDetectionSettingsError``
+
+### Capturing Both Sides of ID Card
+
+- ``CardAndBarcodeDetectionViewController``
+- ``CardAndBarcodeDetectionSettings``
+- ``CardAndBarcodeDetectionViewControllerDelegate``

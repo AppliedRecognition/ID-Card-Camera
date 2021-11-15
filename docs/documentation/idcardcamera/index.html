@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    
+    <title>IDCardCamera| Documentation</title>
+    
+    <link rel="icon"       href="../../favicon.ico" />
+    <link rel="mask-icon"  href="../../favicon.svg" color="#333333" />
+    <link rel='stylesheet' href='../../css/site.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/default.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="doc-topic">
+        <nav role="navigation" class="nav documentation-nav">
+  <div class="nav__wrapper">
+    <div class="nav__background"></div>
+    <div class="nav-content">
+      <div class="nav-title">
+        <span class="nav-title-link inactive">Documentation</span>
+      </div>
+      <div class="nav-menu">
+        <div class="nav-menu-tray">
+          <ul class="nav-menu-items hierarchy">
+            
+              <li class="nav-menu-item hierarchy-item">
+                
+                  <span class="current item">IDCardCamera</span>
+                
+                
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main" role="main" class="main">
+  <div class="topictitle">
+  <span class="eyebrow">Framework</span>
+  <h1 class="title">IDCardCamera</h1>
+</div>
+
+  <div class="container content-grid">
+  <div class="description">
+    <div class="abstract content">
+      Capture photo page and barcode of ID cards on iOS
+    </div>
+  </div>
+  
+  <!-- The sidebar once we have one: <div class="summary"></div> -->
+  
+  <div class="primary-content">
+    <div class='content'><h2 id='Overview'>Overview</h2><ul><li><p><p>Detects an ID card in a camera view and returns the de-warped image of the ID card.</p></p></li><li><p><p>Scans PDF417 barcode on the back side of an ID card.</p></p></li></ul><h3 id='Example-Usage'>Example Usage</h3><div data-syntax="swift" class="code-listing">
+  <div class="container-general">
+    <pre><code><span class="code-line-container"><span data-line-number="1" class="code-number" style="display: none;"></span><span class="code-line">import UIKit</span></span>
+<span class="code-line-container"><span data-line-number="2" class="code-number" style="display: none;"></span><span class="code-line">import IDCardCamera</span></span>
+<span class="code-line-container"><span data-line-number="3" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="4" class="code-number" style="display: none;"></span><span class="code-line">class ViewController: UIViewController, CardDetectionViewControllerDelegate {</span></span>
+<span class="code-line-container"><span data-line-number="5" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="6" class="code-number" style="display: none;"></span><span class="code-line">    @IBOutlet var imageView: UIImageView!</span></span>
+<span class="code-line-container"><span data-line-number="7" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="8" class="code-number" style="display: none;"></span><span class="code-line">    func scanIDCard() {</span></span>
+<span class="code-line-container"><span data-line-number="9" class="code-number" style="display: none;"></span><span class="code-line">        // Set the scan settings</span></span>
+<span class="code-line-container"><span data-line-number="10" class="code-number" style="display: none;"></span><span class="code-line">        // In this example the aspect ratio is that of a typical credit card</span></span>
+<span class="code-line-container"><span data-line-number="11" class="code-number" style="display: none;"></span><span class="code-line">        // The width and height units are not important</span></span>
+<span class="code-line-container"><span data-line-number="12" class="code-number" style="display: none;"></span><span class="code-line">        let settings = CardDetectionSettings(width: 85.6, height: 53.98)</span></span>
+<span class="code-line-container"><span data-line-number="13" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="14" class="code-number" style="display: none;"></span><span class="code-line">        // Create the view controller</span></span>
+<span class="code-line-container"><span data-line-number="15" class="code-number" style="display: none;"></span><span class="code-line">        let controller = CardDetectionViewController()</span></span>
+<span class="code-line-container"><span data-line-number="16" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="17" class="code-number" style="display: none;"></span><span class="code-line">        // Set the delegate that will receive the result</span></span>
+<span class="code-line-container"><span data-line-number="18" class="code-number" style="display: none;"></span><span class="code-line">        controller.delegate = self</span></span>
+<span class="code-line-container"><span data-line-number="19" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="20" class="code-number" style="display: none;"></span><span class="code-line">        // Present the card detection view controller</span></span>
+<span class="code-line-container"><span data-line-number="21" class="code-number" style="display: none;"></span><span class="code-line">        self.present(controller, animated: true, completion: nil)</span></span>
+<span class="code-line-container"><span data-line-number="22" class="code-number" style="display: none;"></span><span class="code-line">    }</span></span>
+<span class="code-line-container"><span data-line-number="23" class="code-number" style="display: none;"></span><span class="code-line"></span></span>
+<span class="code-line-container"><span data-line-number="24" class="code-number" style="display: none;"></span><span class="code-line">    func cardDetectionViewController(_ viewController: CardDetectionViewController, didDetectCard image: CGImage, withSettings settings: CardDetectionSettings) {</span></span>
+<span class="code-line-container"><span data-line-number="25" class="code-number" style="display: none;"></span><span class="code-line">        // The card has been scanned</span></span>
+<span class="code-line-container"><span data-line-number="26" class="code-number" style="display: none;"></span><span class="code-line">        // Display the image in the image view</span></span>
+<span class="code-line-container"><span data-line-number="27" class="code-number" style="display: none;"></span><span class="code-line">        self.imageView.image = UIImage(cgImage: image)</span></span>
+<span class="code-line-container"><span data-line-number="28" class="code-number" style="display: none;"></span><span class="code-line">    }</span></span>
+<span class="code-line-container"><span data-line-number="29" class="code-number" style="display: none;"></span><span class="code-line">}</span></span>
+</code></pre>
+  </div>
+</div>
+</div>
+  </div>
+</div>
+
+  
+  <section id='topics' class='contenttable alt-light'>
+  <div class='container'>
+    <h2 class='title'>Topics</h2>
+
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Capturing ID Card Photo Page</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardDetectionViewController/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>CardDetectionViewController</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">View controller used to run a camera session that collects an image of an card with a given aspect ratio and returns an image with corrected perspective</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardDetectionSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>CardDetectionSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Card detection session settings</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardDetectionViewControllerDelegate/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>protocol</span><span class='decorator empty-token'> </span><span class='identifier'>CardDetectionViewControllerDelegate</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Card detection view controller delegate</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Capturing ID Card Barcode</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BarcodeDetectionViewController/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>BarcodeDetectionViewController</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Barcode detection view controller</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BarcodeDetectionSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>BarcodeDetectionSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Barcode detection settings</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BarcodeDetectionViewControllerDelegate/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>protocol</span><span class='decorator empty-token'> </span><span class='identifier'>BarcodeDetectionViewControllerDelegate</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Barcode detection view controller delegate</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BarcodeDetectionSettingsError/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>enum</span><span class='decorator empty-token'> </span><span class='identifier'>BarcodeDetectionSettingsError</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Barcode detection settings error</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Capturing Both Sides of ID Card</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardAndBarcodeDetectionViewController/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>CardAndBarcodeDetectionViewController</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">View controller that scans both front and back of the card</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardAndBarcodeDetectionSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>CardAndBarcodeDetectionSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Combined card and barcode detection settings</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/CardAndBarcodeDetectionViewControllerDelegate/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>protocol</span><span class='decorator empty-token'> </span><span class='identifier'>CardAndBarcodeDetectionViewControllerDelegate</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Delegate for combined detection of front and back of the card</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Classes</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BaseBarcodeDetectionSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>BaseBarcodeDetectionSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Base class for barcode detection settings</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BaseCardDetectionSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>BaseCardDetectionSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Base card detection settings</div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/BaseCardDetectionViewController/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>BaseCardDetectionViewController</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content"></div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/ObjectDetectionViewController/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>ObjectDetectionViewController</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content"></div>
+              </div>
+            </div>
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/PerspectiveCorrectionParamsOperation/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>class</span><span class='decorator empty-token'> </span><span class='identifier'>PerspectiveCorrectionParamsOperation</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content"></div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+      <div class="row contenttable-section">
+        <div class="col section-title large-3 medium-3 small-12">
+          <h3 class="title">Protocols</h3>
+        </div>
+  
+        <div class="col section-content large-9 medium-9 small-12">
+          
+            <div class="link-block topic">
+              
+                <a href="../../documentation/IDCardCamera/TorchSettings/index.html" class="link has-adjacent-elements">
+                  <code class="decorated-title"><span class='decorator'>protocol</span><span class='decorator empty-token'> </span><span class='identifier'>TorchSettings</span></code>
+                </a>
+              
+              
+              <div class="abstract">
+                <div class="content">Protocol describing torch settings</div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+  
+</main>
+
+      </div>
+    </div>
+    <footer class="footer"></footer>
+    <script>hljs.highlightAll();</script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+//
+//  Base.xcconfig
+//  IDCardCamera
+//
+//  Created by Jakub Dolejs on 12/11/2021.
+//  Copyright © 2021 Applied Recognition Inc. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+MARKETING_VERSION = 1.4.2
+CURRENT_PROJECT_VERSION = 1004002

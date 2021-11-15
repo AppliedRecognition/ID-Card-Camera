@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AAMVABarcodeParser",
+        "repositoryURL": "https://github.com/AppliedRecognition/AAMVA-Barcode-Parser-Apple.git",
+        "state": {
+          "branch": null,
+          "revision": "f7e7a12e52b55b2cd24447926ada3de7cf9080d5",
+          "version": "1.4.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

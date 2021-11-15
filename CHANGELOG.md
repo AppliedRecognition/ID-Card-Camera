@@ -1,5 +1,15 @@
 # Change log
 
+## 1.4.2
+ - Framework now available as Swift Package
+ - Added documentation catalogue
+ - Bug fixes
+
+## 1.4.1
+ - More reliable interface orientation detection
+ - Framework now available in app extensions
+ - Bug fixes
+
 ## 1.4.0
  - Added scanning of barcodes on the back of the ID card
 
