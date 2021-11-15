@@ -19,7 +19,7 @@ let package = Package(
     targets: [
         .target(
             name: "IDCardCamera",
-            exclude: ["BundleHelper.swift", "Resources/Info.plist", "Resources/Base.xcconfig"]
+            exclude: ["Bundle+IDCardCamera.swift", "Resources/Info.plist", "Resources/Base.xcconfig"]
         ),
         .target(
             name: "TestApp",

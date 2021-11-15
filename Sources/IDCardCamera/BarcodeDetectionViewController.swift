@@ -27,7 +27,7 @@ public class BarcodeDetectionViewController: ObjectDetectionViewController {
     /// - Since: 1.4.0
     @objc public init(settings: BarcodeDetectionSettings) {
         self.settings = settings
-        super.init(nibName: "BarcodeDetectionViewController", bundle: BundleHelper.moduleBundle)
+        super.init(nibName: "BarcodeDetectionViewController", bundle: Bundle.module)
     }
     
     required init?(coder: NSCoder) {

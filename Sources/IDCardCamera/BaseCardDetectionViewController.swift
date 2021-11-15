@@ -44,7 +44,7 @@ public class BaseCardDetectionViewController: ObjectDetectionViewController {
     private var collectedImages: [(CGImage,Float)] = []
     
     @objc public init() {
-        super.init(nibName: "CardDetectionViewController", bundle: BundleHelper.moduleBundle)
+        super.init(nibName: "CardDetectionViewController", bundle: Bundle.module)
     }
     
     required init?(coder: NSCoder) {
