@@ -34,8 +34,8 @@
 		3B3FF9ED23A2829800156A59 /* IDCardCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */; };
 		3B3FF9EE23A2829800156A59 /* IDCardCamera.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B483D8B273EFC65008713C6 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B483D8A273EFC65008713C6 /* ResultViewController.swift */; };
-		3B483D8E273FBDF4008713C6 /* AAMVABarcodeParser in Frameworks */ = {isa = PBXBuildFile; productRef = 3B483D8D273FBDF4008713C6 /* AAMVABarcodeParser */; };
 		3BBD4C8F274273E300A3B5D8 /* IDCardCamera.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3BBD4C8E274273E300A3B5D8 /* IDCardCamera.docc */; };
+		3BBD4C972742903200A3B5D8 /* AAMVABarcodeParser in Frameworks */ = {isa = PBXBuildFile; productRef = 3BBD4C962742903200A3B5D8 /* AAMVABarcodeParser */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B483D8E273FBDF4008713C6 /* AAMVABarcodeParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3FF9ED23A2829800156A59 /* IDCardCamera.framework in Frameworks */,
+				3BBD4C972742903200A3B5D8 /* AAMVABarcodeParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,6 @@
 			);
 			name = IDCardCamera;
 			packageProductDependencies = (
-				3B483D8D273FBDF4008713C6 /* AAMVABarcodeParser */,
 			);
 			productName = IDCardCamera;
 			productReference = 3B3FF9A323A19E9F00156A59 /* IDCardCamera.framework */;
@@ -245,6 +244,9 @@
 				3B3FF9F023A2829800156A59 /* PBXTargetDependency */,
 			);
 			name = TestApp;
+			packageProductDependencies = (
+				3BBD4C962742903200A3B5D8 /* AAMVABarcodeParser */,
+			);
 			productName = TestApp;
 			productReference = 3B3FF9D823A2826F00156A59 /* TestApp.app */;
 			productType = "com.apple.product-type.application";
@@ -520,6 +522,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				RUN_DOCUMENTATION_COMPILER = YES;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -547,6 +550,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				RUN_DOCUMENTATION_COMPILER = YES;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -636,7 +640,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3B483D8D273FBDF4008713C6 /* AAMVABarcodeParser */ = {
+		3BBD4C962742903200A3B5D8 /* AAMVABarcodeParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3B483D8C273FBDF4008713C6 /* XCRemoteSwiftPackageReference "AAMVA-Barcode-Parser-Apple" */;
 			productName = AAMVABarcodeParser;
